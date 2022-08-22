@@ -4,8 +4,8 @@
   "description": "careApp",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon server.js",
-    "start:prod": "SET NODE_ENV=production&&nodemon server.js",
+    "start": "node server.js",
+    "start:prod": "SET NODE_ENV=production&& server.js",
     "debug": "ndb server.js",
     "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
   },

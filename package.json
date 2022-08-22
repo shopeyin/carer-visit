@@ -7,14 +7,11 @@
     "start": "nodemon server.js",
     "start:prod": "SET NODE_ENV=production&&nodemon server.js",
     "debug": "ndb server.js",
-   
     "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
-    
   },
-
   "engines": {
     "node": "16.13.1"
-},
+  },
   "author": "Oladimeji Shopeyin",
   "license": "ISC",
   "dependencies": {
@@ -36,6 +33,7 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.28.0",
+    "nodemon": "^2.0.19",
     "prettier": "^2.5.1"
   }
 }

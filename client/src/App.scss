@@ -1,0 +1,11 @@
+.link-color{
+    color:black !important;
+    text-decoration: none !important;
+}
+.date-center{
+    
+    @media screen and (max-width: 575px) {
+       text-align: center;
+    }
+}
+

@@ -27,15 +27,16 @@ function SignIn({ login }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    alert('ello');
 
-    const data = {
-      email,
-      password,
-    };
+    // const data = {
+    //   email,
+    //   password,
+    // };
 
-    await login(data);
+    // await login(data);
 
-    navigate('/');
+    // navigate('/');
   };
 
   if (tokenLoaded) {

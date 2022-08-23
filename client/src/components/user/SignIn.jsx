@@ -21,6 +21,10 @@ function SignIn({ login }) {
     setTokenloaded(true);
   }, [navigate]);
 
+  const handleClick = () => {
+    alert('hello');
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -30,9 +34,8 @@ function SignIn({ login }) {
     };
 
     await login(data);
-    alert('hello')
-    navigate('/');
 
+    navigate('/');
   };
 
   if (tokenLoaded) {
@@ -40,6 +43,7 @@ function SignIn({ login }) {
       <div className="container">
         <div className="row signin-container d-flex justify-content-center align-items-center">
           <div className="col-12 col-sm-5">
+            <button onClick={handleClick}>click here</button>
             <form onSubmit={handleSubmit}>
               {' '}
               <p style={{ color: 'red' }}>

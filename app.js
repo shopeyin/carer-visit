@@ -8,7 +8,6 @@ const globalErrorHandler = require('./controllers/errorController');
 const app = express();
 app.use(cors());
 
-
 const serviceUserRoute = require('./routes/serviceUserRoutes');
 const carerRoute = require('./routes/carerRoutes');
 const getPrivateDataRoute = require('./routes/privateRoute');
@@ -22,9 +21,9 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('build'));
+  app.use(express.static('client/build'));
   app.get('*', (req, res) => {
-    let filePath = path.resolve(__dirname, 'build', 'index.html');
+    let filePath = path.resolve(__dirname, 'client/build', 'index.html');
     console.log(filePath);
     console.log(__dirname);
     res.sendFile(filePath);

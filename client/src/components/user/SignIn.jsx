@@ -30,7 +30,9 @@ function SignIn({ login }) {
     };
 
     await login(data);
+    alert('hello')
     navigate('/');
+
   };
 
   if (tokenLoaded) {

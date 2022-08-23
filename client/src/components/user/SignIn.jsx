@@ -43,9 +43,8 @@ function SignIn({ login }) {
       <div className="container">
         <div className="row signin-container d-flex justify-content-center align-items-center">
           <div className="col-12 col-sm-5">
-            <button onClick={handleClick}>click here</button>
             <form onSubmit={handleSubmit}>
-              {' '}
+              <button onClick={handleClick}>click here</button>{' '}
               <p style={{ color: 'red' }}>
                 {' '}
                 {errorState ? 'Invalid login details' : ''}

@@ -1,19 +1,22 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { login } from "../../redux/user/user-action";
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { login } from '../../redux/user/user-action';
 
-import { connect } from "react-redux";
+import { connect, useSelector } from 'react-redux';
+import './signin.style.scss';
 
 function SignIn({ login }) {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [tokenLoaded, setTokenloaded] = useState(false);
+
+  let errorState = useSelector((state) => state.user.error);
 
   let navigate = useNavigate();
 
   useEffect(() => {
-    if (localStorage.getItem("Authtoken")) {
-      navigate("/");
+    if (localStorage.getItem('Authtoken')) {
+      navigate('/');
     }
     setTokenloaded(true);
   }, [navigate]);
@@ -27,17 +30,20 @@ function SignIn({ login }) {
     };
 
     await login(data);
-    console.log(data);
-    navigate("/");
+    navigate('/');
   };
 
   if (tokenLoaded) {
     return (
       <div className="container">
-        <div className="row">
-          <div className="col-md-6">
+        <div className="row signin-container d-flex justify-content-center align-items-center">
+          <div className="col-12 col-sm-5">
             <form onSubmit={handleSubmit}>
-              {" "}
+              {' '}
+              <p style={{ color: 'red' }}>
+                {' '}
+                {errorState ? 'Invalid login details' : ''}
+              </p>
               <div className="form-group">
                 <label htmlFor="exampleInputTitle">Email</label>
                 <input
@@ -61,7 +67,8 @@ function SignIn({ login }) {
                 />
 
                 <button type="submit" className="btn btn-primary mt-1">
-                  Submit</button>
+                  Submit
+                </button>
               </div>
             </form>
           </div>

@@ -1,6 +1,6 @@
-import UserActionTypes from "./user-type";
-import axios from "axios";
-import { BASE_URL } from "../../App";
+import UserActionTypes from './user-type';
+import axios from 'axios';
+import { BASE_URL } from '../../App';
 
 export const setCurrentUser = (user) => ({
   type: UserActionTypes.SET_CURRENT_USER,
@@ -10,6 +10,10 @@ export const logOutUser = () => ({
   type: UserActionTypes.SIGN_OUT,
 });
 
+export const setCurrentUserFailure = () => ({
+  type: UserActionTypes.SET_CURRENT_USER_FAILURE,
+});
+
 export function login(userdata) {
   return async (dispatch) => {
     try {
@@ -17,14 +21,15 @@ export function login(userdata) {
         `${BASE_URL}/carers/login`,
         userdata
       );
-      console.log(loggedInUser);
+
       let { data } = loggedInUser;
 
-      localStorage.setItem("Authtoken", data.token);
+      localStorage.setItem('Authtoken', data.token);
       dispatch(setCurrentUser(data.user));
     } catch (error) {
       console.log(error.response.data);
-      localStorage.removeItem("Authtoken");
+      localStorage.removeItem('Authtoken');
+      dispatch(setCurrentUserFailure());
     }
   };
 }
@@ -33,8 +38,8 @@ export const fetchUserData = () => {
   return async (dispatch) => {
     const config = {
       headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("Authtoken")}`,
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('Authtoken')}`,
       },
     };
     try {
@@ -42,7 +47,7 @@ export const fetchUserData = () => {
       console.log(data.data);
       dispatch(setCurrentUser(data.data));
     } catch (error) {
-      localStorage.removeItem("Authtoken");
+      localStorage.removeItem('Authtoken');
     }
   };
 };

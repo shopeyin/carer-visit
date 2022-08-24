@@ -29,14 +29,14 @@ function SignIn({ login }) {
     e.preventDefault();
     alert('ello');
 
-    // const data = {
-    //   email,
-    //   password,
-    // };
+    const data = {
+      email,
+      password,
+    };
 
-    // await login(data);
-
-    // navigate('/');
+    await login(data);
+    alert('ello');
+    navigate('/');
   };
 
   if (tokenLoaded) {

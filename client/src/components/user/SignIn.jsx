@@ -21,18 +21,16 @@ function SignIn({ login }) {
     setTokenloaded(true);
   }, [navigate]);
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    alert('hello 1');
 
     const data = {
       email,
       password,
     };
-    alert('hello 2');
+    alert('before api');
     await login(data);
-    alert('hello 3');
+    alert('after api');
     navigate('/');
   };
 
@@ -42,7 +40,6 @@ function SignIn({ login }) {
         <div className="row signin-container d-flex justify-content-center align-items-center">
           <div className="col-12 col-sm-5">
             <form onSubmit={handleSubmit}>
-             
               <p style={{ color: 'red' }}>
                 {' '}
                 {errorState ? 'Invalid login details' : ''}

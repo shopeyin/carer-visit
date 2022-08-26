@@ -21,7 +21,7 @@ export function login(userdata) {
         `${BASE_URL}/carers/login`,
         userdata
       );
-      alert('i got here');
+
       let { data } = loggedInUser;
 
       localStorage.setItem('Authtoken', data.token);

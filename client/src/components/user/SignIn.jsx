@@ -28,9 +28,9 @@ function SignIn({ login }) {
       email,
       password,
     };
-    alert('before api');
+    
     await login(data);
-    alert('after api');
+    
     navigate('/');
   };
 

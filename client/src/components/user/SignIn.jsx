@@ -28,7 +28,7 @@ function SignIn({ login }) {
       email,
       password,
     };
-
+    console.log(data,'loggedIn user')
     await login(data);
 
     navigate('/');

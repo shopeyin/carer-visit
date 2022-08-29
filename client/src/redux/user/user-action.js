@@ -22,6 +22,8 @@ export function login(userdata) {
         userdata
       );
 
+      console.log(loggedInUser,'loggedIn user')
+
       let { data } = loggedInUser;
 
       localStorage.setItem('Authtoken', data.token);

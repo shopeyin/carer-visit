@@ -28,9 +28,9 @@ function SignIn({ login }) {
       email,
       password,
     };
-    
+
     await login(data);
-    
+
     navigate('/');
   };
 
@@ -48,7 +48,7 @@ function SignIn({ login }) {
                 <label htmlFor="exampleInputTitle">Email</label>
                 <input
                   type="email"
-                  className="form-control"
+                  className="form-control form-control-lg"
                   onChange={(e) => {
                     setEmail(e.target.value);
                   }}
@@ -58,7 +58,7 @@ function SignIn({ login }) {
                 <label htmlFor="exampleInputTitle">Password</label>
                 <input
                   type="password"
-                  className="form-control"
+                  className="form-control form-control-lg"
                   onChange={(e) => {
                     setPassword(e.target.value);
                   }}

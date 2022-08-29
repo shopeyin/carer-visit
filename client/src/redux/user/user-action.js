@@ -17,6 +17,7 @@ export const setCurrentUserFailure = () => ({
 export function login(userdata) {
   return async (dispatch) => {
     try {
+      console.log('oya oo')
       const loggedInUser = await axios.post(
         `${BASE_URL}/carers/login`,
         userdata

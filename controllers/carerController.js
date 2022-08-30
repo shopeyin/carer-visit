@@ -104,7 +104,7 @@ exports.deleteCarer = async (req, res) => {
 
 exports.loginCarer = async (req, res) => {
   const { email, password } = req.body;
-
+  console.log('BACKEND login api');
   if (!email || !password) {
     console.log('send  1');
     return res.status(400).json({

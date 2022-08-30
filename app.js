@@ -8,12 +8,12 @@ const globalErrorHandler = require('./controllers/errorController');
 const app = express();
 app.use(cors());
 
-const serviceUserRoute = require('./routes/serviceUserRoutes');
-const carerRoute = require('./routes/carerRoutes');
+const serviceUserRoutes = require('./routes/serviceUserRoutes');
+const carerRoutes = require('./routes/carerRoutes');
 const getPrivateDataRoute = require('./routes/privateRoute');
-const taskRoute = require('./routes/taskRoute');
-const visitRoute = require('./routes/visitRoute');
-const visitInformationRoute = require('./routes/visitInformationRoute');
+const taskRoutes = require('./routes/taskRoute');
+const visitRoutes = require('./routes/visitRoute');
+const visitInformationRoutes = require('./routes/visitInformationRoute');
 
 //MIDDLEWARES
 if (process.env.NODE_ENV === 'development') {
@@ -24,7 +24,7 @@ if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));
   app.get('*', (req, res) => {
     let filePath = path.resolve(__dirname, 'client/build', 'index.html');
-   
+
     res.sendFile(filePath);
   });
 }
@@ -44,11 +44,11 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use('/api/v1/serviceusers', serviceUserRoute);
-app.use('/api/v1/carers', carerRoute);
-app.use('/api/v1/task', taskRoute);
-app.use('/api/v1/visit', visitRoute);
-app.use('/api/v1/visitInformation', visitInformationRoute);
+app.use('/api/v1/serviceusers', serviceUserRoutes);
+app.use('/api/v1/carers', carerRoutes);
+app.use('/api/v1/task', taskRoutes);
+app.use('/api/v1/visit', visitRoutes);
+app.use('/api/v1/visitInformation', visitInformationRoutes);
 app.use('/api/v1/private', getPrivateDataRoute);
 
 app.all('*', (req, res, next) => {

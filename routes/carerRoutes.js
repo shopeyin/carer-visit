@@ -8,8 +8,8 @@ router
   .get(carerController.getAllCarers)
   .post(carerController.createCarer);
 
+  
 router.route('/login').post(carerController.loginCarer);
-
 router
   .route('/:id/')
   .get(carerController.getCarer)

@@ -1,7 +1,6 @@
-import CarerActionTypes from "./carer-type";
-import axios from "axios";
-import { BASE_URL } from "../../App";
-
+import CarerActionTypes from './carer-type';
+import axios from 'axios';
+import { BASE_URL } from '../../App';
 
 export const getCarers = () => ({
   type: CarerActionTypes.GET_CARERS,
@@ -45,12 +44,11 @@ export function createNewCarer(dataInfo, callBack) {
   return async (dispatch) => {
     try {
       const newCarer = await axios.post(`${BASE_URL}/carers`, dataInfo);
-      
 
       let {
         data: { user },
       } = newCarer;
-      console.log("DATA", user);
+      console.log('DATA', user);
 
       dispatch(createCarer(user));
       callBack();

@@ -17,17 +17,10 @@ export const setCurrentUserFailure = () => ({
 export function login(userdata) {
   return async (dispatch) => {
     try {
-      console.log('oya oo');
-      // const loggedInUser = await axios.post(
-      //   `${BASE_URL}/carers/login`,
-      //   userdata
-      // );
       const loggedInUser = await axios.post(
-        `http://127.0.0.1:1000/api/v1/carers/login`,
+        `${BASE_URL}/carers/login`,
         userdata
       );
-
-      console.log(loggedInUser, 'loggedIn user oo');
 
       let { data } = loggedInUser;
 

@@ -6,7 +6,10 @@ const INITIAL_STATE = {
   hasErrors: false,
 };
 
+
+
 const CarerReducer = (state = INITIAL_STATE, action) => {
+  
   switch (action.type) {
     case CarerActionTypes.GET_CARERS:
       return { ...state, loading: true };

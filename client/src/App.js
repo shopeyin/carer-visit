@@ -1,15 +1,15 @@
-import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { useSelector } from "react-redux";
-import AdminHomePage from "./components/admin/adminhomepage/AdminHomePage";
-import ProtectedRoute from "./ProtectedRoute";
-import ServiceUserActivities from "./components/user/serviceuseractivities/ServiceUserActivities";
-import CarerPage from "./components/user/carerhomepage/CarerHomePage";
-import SignIn from "./components/user/SignIn";
-import Navbar from "./components/admin/navigation/Navbar";
-import "./App.scss";
+import React from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import AdminHomePage from './components/admin/adminhomepage/AdminHomePage';
+import ProtectedRoute from './ProtectedRoute';
+import ServiceUserActivities from './components/user/serviceuseractivities/ServiceUserActivities';
+import CarerPage from './components/user/carerhomepage/CarerHomePage';
+import SignIn from './components/user/SignIn';
+import Navbar from './components/admin/navigation/Navbar';
+import './App.scss';
 
-export const BASE_URL = "http://127.0.0.1:1000/api/v1";
+export const BASE_URL = 'http://127.0.0.1:1000/api/v1';
 
 function App() {
   const currentUser = useSelector((state) => state.user.currentUser);
@@ -24,7 +24,7 @@ function App() {
             path="/"
             element={
               <ProtectedRoute isAllowed={!!currentUser} redirectPath="/signin">
-                {" "}
+                {' '}
                 <CarerPage />
               </ProtectedRoute>
             }
@@ -33,7 +33,7 @@ function App() {
             path="activities/:id"
             element={
               <ProtectedRoute isAllowed={!!currentUser} redirectPath="/signin">
-                {" "}
+                {' '}
                 <ServiceUserActivities />
               </ProtectedRoute>
             }
@@ -42,10 +42,10 @@ function App() {
             path="admin/*"
             element={
               <ProtectedRoute
-                isAllowed={!!currentUser && currentUser.role === "admin"}
+                isAllowed={!!currentUser && currentUser.role === 'admin'}
                 redirectPath="/signin"
               >
-                {" "}
+                {' '}
                 <AdminHomePage />
               </ProtectedRoute>
             }

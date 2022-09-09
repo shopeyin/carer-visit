@@ -1,0 +1,66 @@
+.navigation{
+   
+    &__sidebar{
+        background-color: lightgrey;
+      
+        @media screen and (max-width : 575px) {
+                           display: none;
+                  }
+    }
+
+    &__innerpage{
+ 
+        min-height: 97vh;
+     
+    }
+}
+
+
+
+// .container-fluid{
+//     &__box{
+//      min-height: 100vh;
+//     }
+//     &__menu{
+//         background-color: yellow;
+
+       
+
+        
+
+//          @media screen and (max-width : 575px) {
+//                display: none;
+//                }
+    
+
+//         &-adminName{
+//             background-color: green;
+//             min-height: 15%
+//         }
+//         &-logOutBtn{
+//             min-height: 50%;
+//         }
+//     }
+
+//     &__page{
+      
+
+//        #homebar{
+       
+//         @media screen and (max-width : 575px) {
+//             display: none !important;
+           
+//             }
+           
+//        }
+//     }
+// }
+
+// .b{
+//     border:1px solid black;
+// }
+// .r{
+//     border:1px solid red;
+// }
+
+

@@ -18,7 +18,7 @@ const visitInformationRoute = require('./routes/visitInformationRoute');
 //MIDDLEWARES
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
-  let filePath = path.resolve(__dirname, 'client/build', 'index.html');
+  let filePath = path.resolve('client/build', 'index.html');
   console.log(__dirname, 'DIRNAME');
   console.log(filePath, 'Filepath');
 }
@@ -26,7 +26,7 @@ if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));
 
   app.get('*', (req, res) => {
-    let filePath = path.resolve(__dirname, 'client/build', 'index.html');
+    let filePath = path.resolve('client/build', 'index.html');
     console.log(__dirname, 'DIRNAME');
     console.log(filePath, 'Filepath');
     res.sendFile(filePath);

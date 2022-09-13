@@ -49,38 +49,38 @@ describe('CarerVisit component', () => {
 // });
 
 //TESTING MOCK FETCH
-// describe('MOCK FETCH OF fetchVisit', () => {
-//   it('should fetch a single visit', async () => {
-//     const mockData = {
-//       status: 200,
-//       data: {
-//         data: {
-//           visit: [
-//             {
-//               serviceusersToVisit: [[Object], [Object]],
-//               _id: '630efa2ebee1820ea0ae9066',
-//               careruser: '123',
-//               __v: 0,
-//               dateOfVisit: '2022-08-31T00:00:00.000Z',
-//             },
-//           ],
-//         },
-//       },
-//     };
+describe('MOCK FETCH OF fetchVisit', () => {
+  it('should fetch a single visit', async () => {
+    const mockData = {
+      status: 200,
+      data: {
+        data: {
+          visit: [
+            {
+              serviceusersToVisit: [[Object], [Object]],
+              _id: '630efa2ebee1820ea0ae9066',
+              careruser: '123',
+              __v: 0,
+              dateOfVisit: '2022-08-31T00:00:00.000Z',
+            },
+          ],
+        },
+      },
+    };
 
-//     let visitDate = {
-//       dateOfVisit: '2022-08-31T00:00:00.000Z',
-//     };
+    let visitDate = {
+      dateOfVisit: '2022-08-31T00:00:00.000Z',
+    };
 
-//     axios.post.mockResolvedValue(mockData);
+    axios.post.mockResolvedValue(mockData);
 
-//     // jest.spyOn(axios, 'post').mockResolvedValue(mockData);
+    // jest.spyOn(axios, 'post').mockResolvedValue(mockData);
 
-//     let visit = await fetchVisit('123', visitDate);
-//     // console.log(visit);
-//     expect(visit.length).toBe(1);
-//   });
-// });
+    let visit = await fetchVisit('123', visitDate);
+    // console.log(visit);
+    expect(visit.length).toBe(1);
+  });
+});
 
 // describe("carer visit component", () => {
 //   let mockCurrentUser = {

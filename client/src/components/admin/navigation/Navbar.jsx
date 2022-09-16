@@ -15,7 +15,7 @@ function Navbar({ logOutUser, currentUser }) {
   return (
     <nav className="navbar navbar-expand-sm navbar-light bg-light">
       <NavLink className="navbar-brand ml-3" to="/">
-        Homess
+        Home
       </NavLink>
       {currentUser ? (
         <button

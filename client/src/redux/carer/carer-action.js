@@ -20,6 +20,7 @@ export const createCarer = (carer) => ({
 });
 
 export function fetchCarers() {
+  console.log('FETCH CARERS CALLED');
   return async (dispatch) => {
     dispatch(getCarers());
 

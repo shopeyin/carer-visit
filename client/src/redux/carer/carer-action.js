@@ -1,6 +1,6 @@
 import CarerActionTypes from './carer-type';
 import API from '../../API';
-
+import axios from 'axios';
 export const getCarers = () => ({
   type: CarerActionTypes.GET_CARERS,
 });
@@ -25,7 +25,10 @@ export function fetchCarers() {
     dispatch(getCarers());
 
     try {
-      const carerData = await API.get(`carers`);
+      // const carerData = await API.get(`carers`);
+      const carerData = await axios.get(
+        `https://carer-visit.herokuapp.com/api/v1/carers`
+      );
 
       let {
         data: {

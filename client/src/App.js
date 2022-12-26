@@ -9,8 +9,8 @@ import SignIn from './components/user/SignIn';
 import Navbar from './components/admin/navigation/Navbar';
 import './App.scss';
 
-export const BASE_URL = 'http://127.0.0.1:1000/api/v1';
-//export const BASE_URL = 'https://carer-visit.herokuapp.com/';
+//export const BASE_URL = 'http://127.0.0.1:1000/api/v1';
+export const BASE_URL = 'https://carer-visit.herokuapp.com/';
 
 function App() {
   const currentUser = useSelector((state) => state.user.currentUser);

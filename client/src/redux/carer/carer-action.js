@@ -24,7 +24,7 @@ export function fetchCarers() {
     dispatch(getCarers());
 
     try {
-      const carerData = await API.get(`/carers`);
+      const carerData = await API.get(`carers`);
 
       let {
         data: {
@@ -42,7 +42,7 @@ export function fetchCarers() {
 export function createNewCarer(dataInfo, callBack) {
   return async (dispatch) => {
     try {
-      const newCarer = await API.post(`/carers`, dataInfo);
+      const newCarer = await API.post(`carers`, dataInfo);
 
       let {
         data: { user },

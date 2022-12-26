@@ -1,4 +1,4 @@
-import ServiceUserActionTypes from "./serviceuser-type";
+import ServiceUserActionTypes from './serviceuser-type';
 import API from '../../API';
 
 export const getServiceUser = () => ({
@@ -24,7 +24,7 @@ export function fetchServiceUsers() {
     dispatch(getServiceUser());
 
     try {
-      const serviceUserData = await API.get(`/serviceusers`);
+      const serviceUserData = await API.get(`serviceusers`);
 
       let {
         data: {
@@ -42,8 +42,8 @@ export function fetchServiceUsers() {
 export function createNewServiceUser(data) {
   return async (dispatch) => {
     try {
-      API.post(`/serviceusers`, data).then((res) => {
-        console.log("HERE OO", res);
+      API.post(`serviceusers`, data).then((res) => {
+        console.log('HERE OO', res);
         dispatch(createServiceUser(res));
       });
     } catch (error) {

@@ -3,9 +3,8 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchServiceUsers } from "../../../redux/serviceUser/serviceuser-action";
-import { BASE_URL } from "../../../App";
+import API from '../../../API';
 import { reMount } from "../../../redux/remount/remount-action";
-import axios from "axios";
 
 function ServiceUsers({
   loading,
@@ -20,7 +19,7 @@ function ServiceUsers({
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`${BASE_URL}/serviceusers/${id}`);
+      await API.delete(`/serviceusers/${id}`);
       reMount();
     } catch (error) {
       console.log(error);

@@ -3,10 +3,9 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchCarers } from "../../../redux/carer/carer-action";
 import { reMount } from "../../../../src/redux/remount/remount-action";
+import API from '../../../API';
 
-import axios from "axios";
 
-const BASE_URL = "http://127.0.0.1:1000/api/v1/carers";
 
 function Carer({ carers, reMount, reMountComponent, fetchCarers }) {
  
@@ -17,7 +16,7 @@ function Carer({ carers, reMount, reMountComponent, fetchCarers }) {
 
   const handleDeleteCarer = async (id) => {
     try {
-      await axios.delete(`${BASE_URL}/${id}`);
+      await API.delete(`${id}`);
       reMount();
     } catch (error) {
       console.log(error);

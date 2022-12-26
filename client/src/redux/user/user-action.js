@@ -41,7 +41,7 @@ export const fetchUserData = () => {
       },
     };
     try {
-      const { data } = await axios.get(`${BASE_URL}/private`, config);
+      const { data } = await await API.get(`/private`, config);
       console.log(data.data);
       dispatch(setCurrentUser(data.data));
     } catch (error) {

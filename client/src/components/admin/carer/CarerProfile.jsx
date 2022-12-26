@@ -1,14 +1,13 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import { format } from "date-fns";
-import { connect } from "react-redux";
-import AddVisit from "../visit/AddVisit";
-import AddServiceUserToVisit from "../visit/AddServiceUserToVisit";
-import DeleteServiceUserFromVisit from "../visit/DeleteServiceUserFromVisit";
-import VisitInformation from "../visit/VisitInformation";
-import { useParams } from "react-router-dom";
-import { BASE_URL } from "../../../App";
-import axios from "axios";
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { format } from 'date-fns';
+import { connect } from 'react-redux';
+import AddVisit from '../visit/AddVisit';
+import AddServiceUserToVisit from '../visit/AddServiceUserToVisit';
+import DeleteServiceUserFromVisit from '../visit/DeleteServiceUserFromVisit';
+import VisitInformation from '../visit/VisitInformation';
+import { useParams } from 'react-router-dom';
+import API from '../../../API';
 
 function CarerProfile({ serviceUsers }) {
   const [visits, setVisits] = React.useState([]);
@@ -32,7 +31,7 @@ function CarerProfile({ serviceUsers }) {
 
   const handleDeleteVisit = async (id) => {
     try {
-      await axios.delete(`${BASE_URL}/visit/${id}`);
+      await API.delete(`/visit/${id}`);
       reMountComponent();
     } catch (error) {
       console.log(error);
@@ -42,9 +41,7 @@ function CarerProfile({ serviceUsers }) {
   React.useEffect(() => {
     const fetchAllCarerVisits = async () => {
       try {
-        const carerVisit = await axios.get(
-          `${BASE_URL}/visit/${params.carerId}`
-        );
+        const carerVisit = await API.get(`/visit/${params.carerId}`);
 
         const {
           data: { data },
@@ -52,7 +49,7 @@ function CarerProfile({ serviceUsers }) {
 
         const uniqueVisit = [
           ...new Map(
-            data.visit.map((item) => [item["dateOfVisit"], item])
+            data.visit.map((item) => [item['dateOfVisit'], item])
           ).values(),
         ];
 
@@ -68,13 +65,13 @@ function CarerProfile({ serviceUsers }) {
   const filteredVisits = visits.filter((obj) => {
     return obj.dateOfVisit !== undefined;
   });
-  console.log(filteredVisits, "filetered");
+  console.log(filteredVisits, 'filetered');
   return (
     <>
       <div className="row mt-4">
         <div className="col-md-5">
           <h3>
-            {carer ? carer.name : ""} {carer ? carer.barePassword : ""}
+            {carer ? carer.name : ''} {carer ? carer.barePassword : ''}
           </h3>
         </div>
       </div>
@@ -91,7 +88,7 @@ function CarerProfile({ serviceUsers }) {
       <div className="row mt-1">
         <div className="col-md-5">
           <h3>
-            {carer ? carer.name : ""} has{" "}
+            {carer ? carer.name : ''} has{' '}
             {filteredVisits.length > 1
               ? `${filteredVisits.length}  visits`
               : `${filteredVisits.length}  visit`}
@@ -103,13 +100,13 @@ function CarerProfile({ serviceUsers }) {
           return (
             <div key={item._id} className="row mt-4">
               <div className="col col-md-2">
-                {" "}
+                {' '}
                 {item.dateOfVisit ? (
                   <VisitInformation
                     visitId={item._id}
                     dateOfVisit={format(
                       new Date(item.dateOfVisit),
-                      "yyyy-MM-dd"
+                      'yyyy-MM-dd'
                     )}
                   />
                 ) : (
@@ -125,7 +122,7 @@ function CarerProfile({ serviceUsers }) {
                 />
               </div>
               <div className="col col-md-2 ">
-                {" "}
+                {' '}
                 <AddServiceUserToVisit
                   serviceUsers={serviceUsers}
                   visitId={item._id}

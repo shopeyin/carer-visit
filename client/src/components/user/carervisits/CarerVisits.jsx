@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
 import { format } from 'date-fns';
-import { BASE_URL } from '../../../App';
+
 import Visit from './Visit';
-import axios from 'axios';
+
 import { fetchVisit } from '../utils';
 
 function CarerVisits({ currentUser }) {
@@ -23,8 +23,7 @@ function CarerVisits({ currentUser }) {
     const fetchVisitData = async () => {
       try {
         let visit = await fetchVisit(currentUser._id, visitDate);
-        console.log(visit); //prototype = promise, promise state = fulfilled, promise Result = [1,2,3]
-        // visit.then(v=>console.log(v))
+        console.log(visit); 
 
         if (visit.length === 0) {
           setServiceUsersVisit([]);

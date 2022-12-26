@@ -44,7 +44,7 @@ function SignIn({ login }) {
                 {errorState ? 'Invalid login details' : ''}
               </p>
               <div className="form-group">
-                <label htmlFor="exampleInputTitle">Emaill cc</label>
+                <label htmlFor="exampleInputTitle">Email</label>
                 <input
                   type="email"
                   className="form-control form-control-lg"

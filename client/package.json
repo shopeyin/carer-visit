@@ -2,7 +2,7 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://carer-visit.herokuapp.com/",  
+  "proxy":  "http://localhost:8000",
   "jest": {
     "snapshotSerializers": [
       "enzyme-to-json/serializer"

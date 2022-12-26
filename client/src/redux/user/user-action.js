@@ -1,6 +1,7 @@
 import UserActionTypes from './user-type';
 import axios from 'axios';
 import { BASE_URL } from '../../App';
+import API from '../../API';
 
 export const setCurrentUser = (user) => ({
   type: UserActionTypes.SET_CURRENT_USER,
@@ -17,10 +18,7 @@ export const setCurrentUserFailure = () => ({
 export function login(userdata) {
   return async (dispatch) => {
     try {
-      const loggedInUser = await axios.post(
-        `http://localhost:8000/api/v1/carers/login`,
-        userdata
-      );
+      const loggedInUser = await API.post(`carers/login`, userdata);
 
       let { data } = loggedInUser;
 

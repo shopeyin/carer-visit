@@ -1,5 +1,4 @@
 import CarerActionTypes from './carer-type';
-import API from '../../API';
 import axios from 'axios';
 const urlVersion = '/api/v1/';
 export const getCarers = () => ({

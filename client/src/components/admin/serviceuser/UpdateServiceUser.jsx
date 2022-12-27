@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import API from '../../../API';
+import React, { useEffect, useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 function UpdateServiceUser() {
-  const [serviceUserName, setserviceUserName] = useState("");
-  const [serviceUserAddress, setserviceUserAddress] = useState("");
-  const [serviceUserPhoneNumber, setserviceUserPhoneNumber] = useState("");
+  const [serviceUserName, setserviceUserName] = useState('');
+  const [serviceUserAddress, setserviceUserAddress] = useState('');
+  const [serviceUserPhoneNumber, setserviceUserPhoneNumber] = useState('');
 
   const params = useParams();
   const navigate = useNavigate();
@@ -16,7 +16,9 @@ function UpdateServiceUser() {
 
   useEffect(() => {
     async function getServiceUserData() {
-      let serviceUserData = await API.get(`$/serviceusers/${params.id}`);
+      let serviceUserData = await axios.get(
+        `/api/v1/serviceusers/${params.id}`
+      );
       const { data } = serviceUserData;
 
       setserviceUserName(data.data.serviceUser.name);
@@ -36,7 +38,7 @@ function UpdateServiceUser() {
     };
 
     try {
-      await API.patch(`/serviceusers/${params.id}`, data);
+      await axios.patch(`/api/v1/serviceusers/${params.id}`, data);
       goToPreviousPage();
     } catch (error) {
       console.log(error);
@@ -46,9 +48,11 @@ function UpdateServiceUser() {
   return (
     <div className="row d-flex align-items-center inneradminpage">
       <div className="col-md-4 ">
-       <h3><b>Update Service User{" "}</b></h3>
+        <h3>
+          <b>Update Service User </b>
+        </h3>
         <form onSubmit={handleSubmit}>
-          {" "}
+          {' '}
           <div className="form-group">
             <label htmlFor="exampleInputTitle">Service User Name</label>
             <input

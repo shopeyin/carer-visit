@@ -1,22 +1,20 @@
-import React from "react";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-import { fetchCarers } from "../../../redux/carer/carer-action";
-import { reMount } from "../../../../src/redux/remount/remount-action";
-import API from '../../../API';
+import React from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { fetchCarers } from '../../../redux/carer/carer-action';
+import { reMount } from '../../../../src/redux/remount/remount-action';
+import axios from 'axios';
 
-
+const urlVersion = '/api/v1/';
 
 function Carer({ carers, reMount, reMountComponent, fetchCarers }) {
- 
   React.useEffect(() => {
     fetchCarers();
-   
   }, [fetchCarers, reMountComponent]);
 
   const handleDeleteCarer = async (id) => {
     try {
-      await API.delete(`${id}`);
+      await axios.delete(`${urlVersion}${id}`);
       reMount();
     } catch (error) {
       console.log(error);
@@ -30,12 +28,12 @@ function Carer({ carers, reMount, reMountComponent, fetchCarers }) {
         <div className="row" key={carer._id}>
           <div className="col-7 col-sm-5 col-md-3   m-1 ">
             <Link to={`${carer._id}`} className="link-color">
-              <div className="card" style={{ width: "100%" }}>
+              <div className="card" style={{ width: '100%' }}>
                 <div className="card-body">
                   <h4 className="card-title"> {carer.name}</h4>
                 </div>
               </div>
-            </Link>{" "}
+            </Link>{' '}
           </div>
           <div className="col-1 col-sm-1 mt-4 ">
             <i
@@ -49,7 +47,7 @@ function Carer({ carers, reMount, reMountComponent, fetchCarers }) {
       );
     });
   } else {
-    itemsToRender = "Loading...";
+    itemsToRender = 'Loading...';
   }
   // style={{ minHeight: "50rem" }} inneradminpage
   return (

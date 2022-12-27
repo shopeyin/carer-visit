@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect } from 'react';
 
-import { Link } from "react-router-dom";
-import { connect } from "react-redux";
-import { fetchServiceUsers } from "../../../redux/serviceUser/serviceuser-action";
-import API from '../../../API';
-import { reMount } from "../../../redux/remount/remount-action";
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { fetchServiceUsers } from '../../../redux/serviceUser/serviceuser-action';
+import axios from 'axios';
+import { reMount } from '../../../redux/remount/remount-action';
 
 function ServiceUsers({
   loading,
@@ -19,7 +19,7 @@ function ServiceUsers({
 
   const handleDelete = async (id) => {
     try {
-      await API.delete(`/serviceusers/${id}`);
+      await axios.delete(`/api/v1/serviceusers/${id}`);
       reMount();
     } catch (error) {
       console.log(error);
@@ -32,16 +32,16 @@ function ServiceUsers({
       return (
         <div
           className="card m-2 link-color"
-          style={{ width: "30rem", height: "3.5rem" }}
+          style={{ width: '30rem', height: '3.5rem' }}
           key={serviceuser._id}
         >
           <Link to={`${serviceuser._id}`} className="link-color">
-            {" "}
+            {' '}
             {serviceuser.name}
           </Link>
           <Link
             to={`edit/${serviceuser._id}`}
-            style={{ position: "relative", top: "-2.5rem", left: "15rem" }}
+            style={{ position: 'relative', top: '-2.5rem', left: '15rem' }}
           >
             <i className="fa-solid fa-pen link-color"></i>
           </Link>
@@ -50,13 +50,13 @@ function ServiceUsers({
             onClick={() => {
               handleDelete(serviceuser._id);
             }}
-            style={{ position: "relative", top: "-5rem", left: "25rem" }}
+            style={{ position: 'relative', top: '-5rem', left: '25rem' }}
           ></i>
         </div>
       );
     });
   } else {
-    itemsToRender = "Loading...";
+    itemsToRender = 'Loading...';
   }
 
   return (

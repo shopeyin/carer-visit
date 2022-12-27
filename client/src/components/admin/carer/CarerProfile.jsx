@@ -8,7 +8,7 @@ import DeleteServiceUserFromVisit from '../visit/DeleteServiceUserFromVisit';
 import VisitInformation from '../visit/VisitInformation';
 import { useParams } from 'react-router-dom';
 import API from '../../../API';
-
+import axios from 'axios';
 function CarerProfile({ serviceUsers }) {
   const [visits, setVisits] = React.useState([]);
   const [reload, setReload] = React.useState(false);
@@ -31,7 +31,7 @@ function CarerProfile({ serviceUsers }) {
 
   const handleDeleteVisit = async (id) => {
     try {
-      await API.delete(`/visit/${id}`);
+      await axios.delete(`/api/v1/visit/${id}`);
       reMountComponent();
     } catch (error) {
       console.log(error);
@@ -41,7 +41,7 @@ function CarerProfile({ serviceUsers }) {
   React.useEffect(() => {
     const fetchAllCarerVisits = async () => {
       try {
-        const carerVisit = await API.get(`/visit/${params.carerId}`);
+        const carerVisit = await axios.get(`/api/v1/visit/${params.carerId}`);
 
         const {
           data: { data },

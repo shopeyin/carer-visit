@@ -18,10 +18,8 @@ export const setCurrentUserFailure = () => ({
 export function login(userdata) {
   return async (dispatch) => {
     try {
-      let url = 'https://carer-visit.herokuapp.com/api/v1/';
-      console.log('URLLLL-ereeee', url);
       // const loggedInUser = await API.post(`carers/login`, userdata);
-      const loggedInUser = await axios.post(`${url}carers/login`, userdata);
+      const loggedInUser = await axios.post(`/api/v1/carers/login`, userdata);
 
       let { data } = loggedInUser;
 

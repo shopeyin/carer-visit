@@ -25,11 +25,8 @@ export function fetchCarers() {
     dispatch(getCarers());
 
     try {
-      let url = 'https://carer-visit.herokuapp.com/api/v1/';
-      //let url = 'http://localhost:1000/api/v1/';
-
       //  const carerData = await API.get(`carers`);
-      const carerData = await axios.get(`${url}carers`);
+      const carerData = await axios.get(`/api/v1/carers`);
       console.log('URLLLL-ereeee', carerData);
 
       let {

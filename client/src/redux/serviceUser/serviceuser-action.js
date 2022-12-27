@@ -1,5 +1,6 @@
 import ServiceUserActionTypes from './serviceuser-type';
 import API from '../../API';
+import axios from 'axios';
 
 export const getServiceUser = () => ({
   type: ServiceUserActionTypes.GET_SERVICEUSERS,
@@ -24,7 +25,7 @@ export function fetchServiceUsers() {
     dispatch(getServiceUser());
 
     try {
-      const serviceUserData = await API.get(`serviceusers`);
+      const serviceUserData = await axios.get(`/api/v1/serviceusers`);
 
       let {
         data: {

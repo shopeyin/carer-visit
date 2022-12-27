@@ -1,7 +1,6 @@
 import ServiceUserActionTypes from './serviceuser-type';
-import API from '../../API';
 import axios from 'axios';
-
+const urlVersion = '/api/v1/';
 export const getServiceUser = () => ({
   type: ServiceUserActionTypes.GET_SERVICEUSERS,
 });
@@ -25,7 +24,7 @@ export function fetchServiceUsers() {
     dispatch(getServiceUser());
 
     try {
-      const serviceUserData = await axios.get(`/api/v1/serviceusers`);
+      const serviceUserData = await axios.get(`${urlVersion}serviceusers`);
 
       let {
         data: {
@@ -43,7 +42,7 @@ export function fetchServiceUsers() {
 export function createNewServiceUser(data) {
   return async (dispatch) => {
     try {
-      API.post(`serviceusers`, data).then((res) => {
+      axios.post(`${urlVersion}serviceusers`, data).then((res) => {
         console.log('HERE OO', res);
         dispatch(createServiceUser(res));
       });

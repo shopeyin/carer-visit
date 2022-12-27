@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   
-  "proxy":  "https://carer-visit.herokuapp.com/",
+  "proxy":  "http://127.0.0.1:1000",
 
   "jest": {
     "snapshotSerializers": [

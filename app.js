@@ -22,12 +22,6 @@ if (process.env.NODE_ENV === 'development') {
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));
-
-  app.get('/*', (req, res) => {
-    let filePath = path.resolve(__dirname, 'client/build/index.html');
-
-    res.sendFile(filePath);
-  });
 }
 
 app.use(express.json());
@@ -45,6 +39,12 @@ app.use('/api/v1/task', taskRoutes);
 app.use('/api/v1/visit', visitRoutes);
 app.use('/api/v1/visitInformation', visitInformationRoutes);
 app.use('/api/v1/private', getPrivateDataRoute);
+
+app.get('*', (req, res) => {
+  let filePath = path.resolve(__dirname, 'client/build/index.html');
+
+  res.sendFile(filePath);
+});
 
 // app.all('*', (req, res, next) => {
 //   next(new AppError(`can't find ${req.originalUrl} on this server`, 404));

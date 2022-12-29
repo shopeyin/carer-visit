@@ -1,9 +1,8 @@
-
-import API from '../../../API';
+import axios from 'axios';
 export const addTaskToUser = async (serviceuserId, data) => {
   try {
-    await API.post(`/${serviceuserId}`, data);
-    console.log("ASYNC submitted");
+    await axios.post(`/api/v1/task/${serviceuserId}`, data);
+    console.log('ASYNC submitted');
   } catch (error) {
     console.log(error);
   }
@@ -11,7 +10,7 @@ export const addTaskToUser = async (serviceuserId, data) => {
 
 export const fetchAllTaskofaServiceUser = async (serviceuserId) => {
   try {
-    const serviceUserData = await API.get(`/${serviceuserId}`);
+    const serviceUserData = await axios.get(`/api/v1/task/${serviceuserId}`);
     const {
       data: { data },
     } = serviceUserData;
@@ -21,14 +20,10 @@ export const fetchAllTaskofaServiceUser = async (serviceuserId) => {
   }
 };
 
-
 export const handleDeleteTask = async (id) => {
   try {
-    await API.delete(`/${id}`);
-   
+    await axios.delete(`/api/v1/task/${id}`);
   } catch (error) {
     console.log(error);
   }
 };
-
-

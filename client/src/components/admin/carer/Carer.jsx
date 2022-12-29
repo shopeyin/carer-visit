@@ -5,7 +5,7 @@ import { fetchCarers } from '../../../redux/carer/carer-action';
 import { reMount } from '../../../../src/redux/remount/remount-action';
 import axios from 'axios';
 
-const urlVersion = '/api/v1/';
+
 
 function Carer({ carers, reMount, reMountComponent, fetchCarers }) {
   React.useEffect(() => {
@@ -14,7 +14,7 @@ function Carer({ carers, reMount, reMountComponent, fetchCarers }) {
 
   const handleDeleteCarer = async (id) => {
     try {
-      await axios.delete(`${urlVersion}${id}`);
+      await axios.delete(`/api/v1/carers/${id}`);
       reMount();
     } catch (error) {
       console.log(error);

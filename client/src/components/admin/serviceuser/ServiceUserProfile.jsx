@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import {
   fetchAllTaskofaServiceUser,
   handleDeleteTask,
-} from "../task/taskFunctions";
-import Task from "../task/Task";
+} from '../task/taskFunctions';
+import Task from '../task/Task';
 function ServiceUserProfile() {
   const [tasks, setTasks] = useState([]);
   const [hideTaskToggle, setHideTaskTooggle] = useState(false);
@@ -18,9 +18,9 @@ function ServiceUserProfile() {
       let data = await fetchAllTaskofaServiceUser(params.serviceuserId);
       setTasks(data);
 
-      console.log("fetchTaskcalled");
+      console.log('fetchTaskcalled');
     };
-    console.log("fetch task compoonent");
+    console.log('fetch task compoonent');
     fetchTask();
   }, [params.serviceuserId, reloadData]);
 
@@ -43,7 +43,7 @@ function ServiceUserProfile() {
 
   return (
     <>
-      {" "}
+      {' '}
       <div className="row">
         <div className="col-md-6">ServiceUser</div>
       </div>
@@ -55,19 +55,21 @@ function ServiceUserProfile() {
       </div>
       <div className="row">
         <div className="col-md-6">
-          {" "}
+          {' '}
           <h4>List of Service user activities/Task</h4>
         </div>
       </div>
       <div className="row">
         <div className="col-md-6">
-          <button onClick={taskToggle} className='btn btn-info'>Add task</button>
+          <button onClick={taskToggle} className="btn btn-info">
+            Add task
+          </button>
         </div>
       </div>
       {hideTaskToggle ? (
         <div className="row">
           <div className="col-md-6">
-            {" "}
+            {' '}
             <Task
               serviceuserId={serviceuser._id}
               taskToggle={taskToggle}
@@ -76,7 +78,7 @@ function ServiceUserProfile() {
           </div>
         </div>
       ) : (
-        ""
+        ''
       )}
       <div className="row">
         <div className="col-md-6">

@@ -23,9 +23,9 @@ if (process.env.NODE_ENV === 'development') {
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));
 
-  app.get('/', (req, res) => {
-    let filePath = path.resolve(__dirname, 'client/build', 'index.html');
-    console.log(filePath);
+  app.get('/*', (req, res) => {
+    let filePath = path.resolve(__dirname, 'client/build/index.html');
+
     res.sendFile(filePath);
   });
 }
@@ -36,12 +36,6 @@ app.use(express.json());
 app.use((req, res, next) => {
   // eslint-disable-next-line prettier/prettier
   console.log('middleware');
-  next();
-});
-
-app.use((req, res, next) => {
-  req.requestTime = new Date().toISOString();
-
   next();
 });
 

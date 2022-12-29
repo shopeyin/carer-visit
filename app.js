@@ -45,7 +45,7 @@ app.use((req, res, next) => {
 });
 
 app.use('/api/v1/serviceusers', serviceUserRoutes);
-app.use('/api/v1/carers', carerRoutes);
+app.use('/carers', carerRoutes);
 app.use('/api/v1/task', taskRoutes);
 app.use('/api/v1/visit', visitRoutes);
 app.use('/api/v1/visitInformation', visitInformationRoutes);

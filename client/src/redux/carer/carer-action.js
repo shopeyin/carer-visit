@@ -24,8 +24,8 @@ export function fetchCarers() {
     dispatch(getCarers());
 
     try {
-      let url = '/api/v1/carers';
-      console.log(url);
+      let url = '/carers';
+
       const carerData = await axios.get(url);
       console.log('CARER DATA HERE', carerData);
 
@@ -60,5 +60,3 @@ export function createNewCarer(dataInfo, callBack) {
     }
   };
 }
-
-//

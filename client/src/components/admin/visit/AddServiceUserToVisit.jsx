@@ -1,9 +1,7 @@
-import React from "react";
+import React from 'react';
 
-import { Modal, Button } from "react-bootstrap";
-import axios from "axios";
-
-const BASE_URL = "http://127.0.0.1:1000/api/v1/visit/";
+import { Modal, Button } from 'react-bootstrap';
+import axios from 'axios';
 
 function AddServiceUserToVisit({
   serviceUsers,
@@ -22,7 +20,7 @@ function AddServiceUserToVisit({
 
   const handleSubmit = async (visitId) => {
     await axios.post(
-      `${BASE_URL}/add/${visitId}`,
+      `api/v1/visit/add/${visitId}`,
 
       updateVisitData
     );
@@ -54,12 +52,12 @@ function AddServiceUserToVisit({
           <Modal.Title>Add ServiceUser To Visit </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {" "}
-          All the service users{" "}
+          {' '}
+          All the service users{' '}
           {serviceUsers.map((serviceUser) => {
             return (
               <p key={serviceUser._id}>
-                {serviceUser.name}{" "}
+                {serviceUser.name}{' '}
                 <input
                   type="checkbox"
                   onChange={(e) => {

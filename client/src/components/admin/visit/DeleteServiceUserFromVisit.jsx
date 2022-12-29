@@ -1,9 +1,7 @@
-import React from "react";
+import React from 'react';
 
-import { Modal, Button } from "react-bootstrap";
-import axios from "axios";
-
-const BASE_URL = "http://127.0.0.1:1000/api/v1/visit/";
+import { Modal, Button } from 'react-bootstrap';
+import axios from 'axios';
 
 function DeleteServiceUserFromVisit({
   serviceUsers,
@@ -22,7 +20,7 @@ function DeleteServiceUserFromVisit({
   };
 
   const handleSubmit = async (visitId, serviceUserId) => {
-    await axios.post(`${BASE_URL}/delete/${visitId}`, {
+    await axios.post(`api/v1/visit/delete/${visitId}`, {
       serviceusersToVisit: serviceUserId,
     });
   };

@@ -1,13 +1,13 @@
-import React, { useEffect } from "react";
-import { connect } from "react-redux";
-import { Modal, Button } from "react-bootstrap";
-import { addHours, format } from "date-fns";
-import DatePicker from "react-datepicker";
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { Modal, Button } from 'react-bootstrap';
+import { addHours, format } from 'date-fns';
+import DatePicker from 'react-datepicker';
 
-import "react-datepicker/dist/react-datepicker.css";
-import axios from "axios";
+import 'react-datepicker/dist/react-datepicker.css';
+import axios from 'axios';
 
-const BASE_URL = "http://127.0.0.1:1000/api/v1/visit/";
+const BASE_URL = 'http://127.0.0.1:1000/api/v1/visit/';
 
 function AddVisit({
   carerId,
@@ -16,7 +16,7 @@ function AddVisit({
   handleDeleteVisit,
   visits,
 }) {
-  console.log(visits, "here");
+  console.log(visits, 'here');
   const [visit, setVisit] = React.useState([]);
   const [show, setShow] = React.useState(false);
   const [serviceUserInfo, setServiceUserInfo] = React.useState([]);
@@ -28,7 +28,7 @@ function AddVisit({
   };
 
   let formatdate =
-    format(new Date(selectedDate), "yyyy-MM-dd") + "T00:00:00.000Z";
+    format(new Date(selectedDate), 'yyyy-MM-dd') + 'T00:00:00.000Z';
 
   const findUniqueVisit = visits.find(
     ({ dateOfVisit }) => dateOfVisit === formatdate
@@ -50,7 +50,7 @@ function AddVisit({
 
   const handleSubmit = async (visitId) => {
     await axios.post(
-      `${BASE_URL}/add/${visitId}`,
+      `/api/v1/visit/add/${visitId}`,
 
       updateVisitData
     );
@@ -58,7 +58,7 @@ function AddVisit({
   };
 
   const createVisit = async () => {
-    let newVisit = await axios.post(BASE_URL, dataId);
+    let newVisit = await axios.post('/api/v1/visit/', dataId);
 
     const {
       data: {
@@ -68,7 +68,7 @@ function AddVisit({
 
     setVisit(visit);
 
-    console.log("visit created");
+    console.log('visit created');
   };
 
   const handleClose = () => {
@@ -102,8 +102,8 @@ function AddVisit({
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {" "}
-          Date{" "}
+          {' '}
+          Date{' '}
           <DatePicker
             selected={selectedDate}
             onChange={(date) => setSelectedDate(date)}
@@ -113,11 +113,11 @@ function AddVisit({
             showYearDropdown
             scrollableMonthYearDropdown
           />
-          All the service users{" "}
+          All the service users{' '}
           {serviceUsers.map((serviceUser) => {
             return (
               <div key={serviceUser._id}>
-                {serviceUser.name}{" "}
+                {serviceUser.name}{' '}
                 <input
                   type="checkbox"
                   onChange={(e) => {
@@ -148,7 +148,7 @@ function AddVisit({
             Close
           </Button>
           <Button
-            disabled={disableBtn ? disableBtn : ""}
+            disabled={disableBtn ? disableBtn : ''}
             variant="primary"
             onClick={() => {
               handleSubmit(visit._id);

@@ -1,7 +1,6 @@
-import React from "react";
-import { Modal, Button } from "react-bootstrap";
-import axios from "axios";
-const VISIT_URL = "http://127.0.0.1:1000/api/v1/visitInformation";
+import React from 'react';
+import { Modal, Button } from 'react-bootstrap';
+import axios from 'axios';
 
 function VisitInformation({ visitId, dateOfVisit }) {
   const [show, setShow] = React.useState(false);
@@ -9,7 +8,7 @@ function VisitInformation({ visitId, dateOfVisit }) {
 
   const getVisitInformation = async (id) => {
     try {
-      let visitInfo = await axios.get(`${VISIT_URL}/${id}`);
+      let visitInfo = await axios.get(`/api/v1/visitInformation/${id}`);
 
       const {
         data: { data },
@@ -56,17 +55,17 @@ function VisitInformation({ visitId, dateOfVisit }) {
           {visitInfo.map((visit) => {
             return (
               <div key={visit._id}>
-                {" "}
+                {' '}
                 Visit Note: {visit.visitNote}
                 <p> Visit Time: {visit.time}</p>
                 <p> ServiceUserName: {visit.serviceUserName}</p>
                 <p>
-                  {" "}
-                  Difference In Distance:{" "}
-                  {visit.diffInDistance ? visit.diffInDistance : ""}
+                  {' '}
+                  Difference In Distance:{' '}
+                  {visit.diffInDistance ? visit.diffInDistance : ''}
                 </p>
                 {/* {visit.activities ? "yes" : "no"} */}
-                Activities:{" "}
+                Activities:{' '}
                 {visit.activities
                   ? Object.keys(visit.activities).map((key, i) => {
                       return (
@@ -76,7 +75,7 @@ function VisitInformation({ visitId, dateOfVisit }) {
                         </div>
                       );
                     })
-                  : ""}
+                  : ''}
                 <p> ---------------------</p>
               </div>
             );

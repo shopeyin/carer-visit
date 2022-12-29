@@ -27,6 +27,11 @@ if (process.env.NODE_ENV === 'production') {
 
     res.sendFile(filePath);
   });
+  // app.get('/', (req, res) => {
+  //   let filePath = path.resolve(__dirname, 'client/build', 'index.html');
+
+  //   res.sendFile(filePath);
+  // });
 }
 
 app.use(express.json());

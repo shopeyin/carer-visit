@@ -24,7 +24,9 @@ export function fetchCarers() {
     dispatch(getCarers());
 
     try {
-      const carerData = await axios.get(`${urlVersion}carers`);
+      let url = 'http://127.0.0.1:1000/api/v1/carers';
+      console.log(url);
+      const carerData = await axios.get(url);
 
       let {
         data: {

@@ -22,16 +22,13 @@ if (process.env.NODE_ENV === 'development') {
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));
-  app.get('/api/v1', (req, res) => {
+
+  app.get('*', (req, res) => {
     let filePath = path.resolve(__dirname, 'client/build', 'index.html');
 
     res.sendFile(filePath);
   });
-  // app.get('/', (req, res) => {
-  //   let filePath = path.resolve(__dirname, 'client/build', 'index.html');
-
-  //   res.sendFile(filePath);
-  // });
+ 
 }
 
 app.use(express.json());
@@ -48,6 +45,8 @@ app.use((req, res, next) => {
 
   next();
 });
+
+
 
 app.use('/api/v1/serviceusers', serviceUserRoutes);
 app.use('/api/v1/carers', carerRoutes);

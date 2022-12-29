@@ -22,7 +22,7 @@ if (process.env.NODE_ENV === 'development') {
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));
-  app.get('*', (req, res) => {
+  app.get('/', (req, res) => {
     let filePath = path.resolve(__dirname, 'client/build', 'index.html');
 
     res.sendFile(filePath);
@@ -45,7 +45,7 @@ app.use((req, res, next) => {
 });
 
 app.use('/api/v1/serviceusers', serviceUserRoutes);
-app.use('/carers', carerRoutes);
+app.use('/api/v1/carers', carerRoutes);
 app.use('/api/v1/task', taskRoutes);
 app.use('/api/v1/visit', visitRoutes);
 app.use('/api/v1/visitInformation', visitInformationRoutes);

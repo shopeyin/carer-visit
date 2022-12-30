@@ -39,7 +39,8 @@ function Carer({ carers, reMount, reMountComponent, fetchCarers }) {
           </div>
           <div
             className="col-1 col-sm-1 col-md-3 text-center p-4"
-            style={{ border: '1px solid black' }}
+            style={{ pointerEvents: 'auto' }}
+            id="trash-can"
           >
             <i
               className="fa-solid fa-trash-can mt-2"

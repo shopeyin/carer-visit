@@ -36,12 +36,12 @@
     
     &__sidebar{
         background-color: lightgrey;
-        border: 1px solid black;
+        
         padding-top: 10rem;
 
         @media screen and (min-width : 899px) {
          // “If [device width] is greater than or equal to 600px, then do {…}”
-           background-color: red;
+          
            font-size: 2rem;
         }
         
@@ -57,7 +57,7 @@
 
     &__innerpage{
  
-        min-height: 97vh;
+        min-height: 100vh;
         background-color:#f2f1ef;
      
     }

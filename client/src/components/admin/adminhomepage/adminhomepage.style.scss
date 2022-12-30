@@ -1,66 +1,70 @@
 .navigation{
+
    
+    &__link{
+        &:link,
+        &:visited {
+          display: inline-block;
+          font-size: 1.5rem;
+          font-weight: 300;
+          padding: 0.5rem 1rem;
+          color: black;
+
+          text-decoration: none;
+          text-transform: uppercase;
+          background-image: linear-gradient(
+            120deg,
+            transparent 0%,
+            transparent 50%,
+            #fff 50%
+          );
+          background-size: 235%;
+          transition: all 0.4s;
+    
+          span {
+            margin-right: 1.5rem;
+            display: inline-block;
+          }
+        }
+    
+        &:hover,
+        &:active {
+          background-position: 100%;
+          transform: translateX(1rem);
+        }
+    }
+    
     &__sidebar{
         background-color: lightgrey;
+        border: 1px solid black;
+        padding-top: 10rem;
+
+        @media screen and (min-width : 899px) {
+         // “If [device width] is greater than or equal to 600px, then do {…}”
+           background-color: red;
+           font-size: 2rem;
+        }
+        
+       
       
         @media screen and (max-width : 575px) {
-                           display: none;
-                  }
+            //If [device width] is less than or equal to 575px, then do {…}”
+            display: none;
+        }
+
+    
     }
 
     &__innerpage{
  
         min-height: 97vh;
+        background-color:#f2f1ef;
      
     }
 }
 
 
 
-// .container-fluid{
-//     &__box{
-//      min-height: 100vh;
-//     }
-//     &__menu{
-//         background-color: yellow;
 
-       
-
-        
-
-//          @media screen and (max-width : 575px) {
-//                display: none;
-//                }
-    
-
-//         &-adminName{
-//             background-color: green;
-//             min-height: 15%
-//         }
-//         &-logOutBtn{
-//             min-height: 50%;
-//         }
-//     }
-
-//     &__page{
-      
-
-//        #homebar{
-       
-//         @media screen and (max-width : 575px) {
-//             display: none !important;
-           
-//             }
-           
-//        }
-//     }
-// }
-
-// .b{
-//     border:1px solid black;
-// }
-// .r{
-//     border:1px solid red;
-// }
 
 

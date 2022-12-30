@@ -9,8 +9,6 @@ import SignIn from './components/user/SignIn';
 import Navbar from './components/admin/navigation/Navbar';
 import './App.scss';
 
-
-
 function App() {
   const currentUser = useSelector((state) => state.user.currentUser);
 
@@ -40,6 +38,7 @@ function App() {
           />
           <Route
             path="admin/*"
+          
             element={
               <ProtectedRoute
                 isAllowed={!!currentUser && currentUser.role === 'admin'}

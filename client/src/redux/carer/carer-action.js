@@ -41,7 +41,6 @@ export function fetchCarers() {
 }
 
 export function createNewCarer(dataInfo, callBack) {
-  
   return async (dispatch) => {
     try {
       const newCarer = await axios.post(`/api/v1/carers`, dataInfo);

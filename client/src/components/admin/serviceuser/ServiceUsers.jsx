@@ -31,7 +31,7 @@ function ServiceUsers({
     itemsToRender = serviceUsers.map((serviceuser) => {
       return (
         <div className="row" key={serviceuser._id}>
-          <div className="col-4 col-sm-4 col-md-4">
+          <div className="col-6 col-sm-4 col-md-4">
             <Link to={`${serviceuser._id}`} className="link-color">
               <div className="card" style={{ width: '100%' }}>
                 <div className="card-body">
@@ -43,14 +43,14 @@ function ServiceUsers({
               </div>
             </Link>{' '}
           </div>
-          <div className="col-4 col-sm-3 col-md-2 text-center p-4">
+          <div className="col-3 col-sm-3 col-md-2 text-center p-4">
             <div>
               <Link to={`edit/${serviceuser._id}`}>
                 <i className="fa-solid fa-pen link-color"></i>
               </Link>
             </div>
           </div>
-          <div className="col-4 col-sm-3 col-md-2 text-center p-4">
+          <div className="col-3 col-sm-3 col-md-2 text-center p-4">
             {' '}
             <i
               className="fa-solid fa-trash-can mt-2 trash-can"

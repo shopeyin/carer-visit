@@ -46,12 +46,9 @@ function UpdateServiceUser() {
   };
 
   return (
-    <div className="serviceuser__container">
-      <div className="row">
+    <div className="serviceuser__container ">
+      <div className="row d-flex justify-content-center align-items-center">
         <div className="col-md-4 m-3">
-          <h3>
-            <b>Update Service User </b>
-          </h3>
           <form onSubmit={handleSubmit}>
             {' '}
             <div className="form-group">

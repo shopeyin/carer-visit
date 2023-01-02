@@ -37,11 +37,7 @@ function Carer({ carers, reMount, reMountComponent, fetchCarers }) {
               </div>
             </Link>{' '}
           </div>
-          <div
-            className="col-3 col-sm-1 col-md-3 text-center p-4"
-            style={{ pointerEvents: 'auto' }}
-            id="trash-can"
-          >
+          <div className="col-3 col-sm-1 col-md-3 text-center p-4 trash-can">
             <i
               className="fa-solid fa-trash-can mt-2"
               onClick={() => {

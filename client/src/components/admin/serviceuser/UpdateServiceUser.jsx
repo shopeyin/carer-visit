@@ -46,43 +46,45 @@ function UpdateServiceUser() {
   };
 
   return (
-    <div className="row d-flex align-items-center inneradminpage">
-      <div className="col-md-4 ">
-        <h3>
-          <b>Update Service User </b>
-        </h3>
-        <form onSubmit={handleSubmit}>
-          {' '}
-          <div className="form-group">
-            <label htmlFor="exampleInputTitle">Service User Name</label>
-            <input
-              type="text"
-              className="form-control"
-              aria-describedby="TitleHelp"
-              value={serviceUserName}
-              onChange={(e) => setserviceUserName(e.target.value)}
-            />
-            <label htmlFor="exampleInputTitle">Address</label>
-            <input
-              type="text"
-              className="form-control"
-              value={serviceUserAddress}
-              aria-describedby="TitleHelp"
-              onChange={(e) => setserviceUserAddress(e.target.value)}
-            />
-            <label htmlFor="exampleInputTitle">Phone number</label>
-            <input
-              type="tel"
-              className="form-control"
-              value={serviceUserPhoneNumber}
-              aria-describedby="TitleHelp"
-              onChange={(e) => setserviceUserPhoneNumber(e.target.value)}
-            />
-          </div>
-          <button type="submit" className="btn btn-primary">
-            Submit
-          </button>
-        </form>
+    <div className="serviceuser__container">
+      <div className="row">
+        <div className="col-md-4 m-3">
+          <h3>
+            <b>Update Service User </b>
+          </h3>
+          <form onSubmit={handleSubmit}>
+            {' '}
+            <div className="form-group">
+              <label htmlFor="exampleInputTitle">Service User Name</label>
+              <input
+                type="text"
+                className="form-control"
+                aria-describedby="TitleHelp"
+                value={serviceUserName}
+                onChange={(e) => setserviceUserName(e.target.value)}
+              />
+              <label htmlFor="exampleInputTitle">Address</label>
+              <input
+                type="text"
+                className="form-control"
+                value={serviceUserAddress}
+                aria-describedby="TitleHelp"
+                onChange={(e) => setserviceUserAddress(e.target.value)}
+              />
+              <label htmlFor="exampleInputTitle">Phone number</label>
+              <input
+                type="tel"
+                className="form-control"
+                value={serviceUserPhoneNumber}
+                aria-describedby="TitleHelp"
+                onChange={(e) => setserviceUserPhoneNumber(e.target.value)}
+              />
+            </div>
+            <button type="submit" className="btn-secondary btn-lg ">
+              Submit
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   );

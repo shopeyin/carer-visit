@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { fetchServiceUsers } from '../../../redux/serviceUser/serviceuser-action';
 import axios from 'axios';
 import { reMount } from '../../../redux/remount/remount-action';
-
+import './serviceuser.style.scss';
 function ServiceUsers({
   loading,
   serviceUsers,
@@ -30,28 +30,35 @@ function ServiceUsers({
   if (serviceUsers) {
     itemsToRender = serviceUsers.map((serviceuser) => {
       return (
-        <div
-          className="card m-2 link-color"
-          style={{ width: '30rem', height: '3.5rem' }}
-          key={serviceuser._id}
-        >
-          <Link to={`${serviceuser._id}`} className="link-color">
+        <div className="row" key={serviceuser._id}>
+          <div className="col-4 col-sm-4 col-md-4">
+            <Link to={`${serviceuser._id}`} className="link-color">
+              <div className="card" style={{ width: '100%' }}>
+                <div className="card-body">
+                  <h4 className="card-title text-center text-uppercase">
+                    {' '}
+                    {serviceuser.name}
+                  </h4>
+                </div>
+              </div>
+            </Link>{' '}
+          </div>
+          <div className="col-4 col-sm-3 col-md-2 text-center p-4">
+            <div>
+              <Link to={`edit/${serviceuser._id}`}>
+                <i className="fa-solid fa-pen link-color"></i>
+              </Link>
+            </div>
+          </div>
+          <div className="col-4 col-sm-3 col-md-2 text-center p-4">
             {' '}
-            {serviceuser.name}
-          </Link>
-          <Link
-            to={`edit/${serviceuser._id}`}
-            style={{ position: 'relative', top: '-2.5rem', left: '15rem' }}
-          >
-            <i className="fa-solid fa-pen link-color"></i>
-          </Link>
-          <i
-            className="fa-solid fa-trash-can mt-2"
-            onClick={() => {
-              handleDelete(serviceuser._id);
-            }}
-            style={{ position: 'relative', top: '-5rem', left: '25rem' }}
-          ></i>
+            <i
+              className="fa-solid fa-trash-can mt-2 trash-can"
+              onClick={() => {
+                handleDelete(serviceuser._id);
+              }}
+            ></i>
+          </div>
         </div>
       );
     });
@@ -60,13 +67,19 @@ function ServiceUsers({
   }
 
   return (
-    <div className="row d-flex align-items-center inneradminpage ">
-      <div className="col-md-6 link-color">
-        <Link to="add-serviceuser" className="link-color">
-          Add Service User
-        </Link>
-        {itemsToRender}
+    <div className="serviceuser__container">
+      <div className="row">
+        <div className="col-md-6 link-color mt-3 mb-3">
+          <Link
+            to="add-serviceuser"
+            className="link-color navigation__link"
+            style={{ marginLeft: '-1rem' }}
+          >
+            Add Service User
+          </Link>
+        </div>
       </div>
+      {itemsToRender}
     </div>
   );
 }

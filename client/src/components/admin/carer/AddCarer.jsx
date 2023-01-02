@@ -41,9 +41,8 @@ function AddCarer({ createNewCarer, fetchCarers }) {
 
     goToPreviousPage();
   };
-  console.log(errMessage);
   return (
-    <div className="row d-flex justify-content-center carer__container">
+    <div className="row carer__container">
       <div className="col-md-5">
         <form onSubmit={handleSubmit}>
           {' '}

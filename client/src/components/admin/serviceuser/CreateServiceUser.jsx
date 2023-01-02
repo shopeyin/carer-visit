@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { connect } from "react-redux";
-import axios from "axios";
-import { createNewServiceUser } from "../../../redux/serviceUser/serviceuser-action";
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { connect } from 'react-redux';
+import axios from 'axios';
+import { createNewServiceUser } from '../../../redux/serviceUser/serviceuser-action';
 
 function CreateServiceUser({ createNewServiceUser }) {
-  const [serviceUserName, setserviceUserName] = useState("");
-  const [serviceUserAddress, setserviceUserAddress] = useState("");
-  const [serviceUserPhoneNumber, setserviceUserPhoneNumber] = useState("");
-  const [postCode, setPostCode] = useState("");
-  const [serviceUserInformation, setServiceUserInformation] = useState("");
+  const [serviceUserName, setserviceUserName] = useState('');
+  const [serviceUserAddress, setserviceUserAddress] = useState('');
+  const [serviceUserPhoneNumber, setserviceUserPhoneNumber] = useState('');
+  const [postCode, setPostCode] = useState('');
+  const [serviceUserInformation, setServiceUserInformation] = useState('');
   const [err, setErr] = useState(false);
   const [postCodeErr, setPostCodeErr] = useState(false);
 
@@ -22,7 +22,6 @@ function CreateServiceUser({ createNewServiceUser }) {
   useEffect(() => {
     if (postCode.length) {
       const fetchAddress = async () => {
-       
         try {
           let address = await axios.get(
             `https://api.postcodes.io/postcodes/${postCode}`
@@ -69,63 +68,64 @@ function CreateServiceUser({ createNewServiceUser }) {
       longitude: serviceUserInformation.longitude,
     };
 
-   
     createNewServiceUser(data);
     goToPreviousPage();
   };
 
   return (
-    <div className="col-md-5">
-      <form onSubmit={handleSubmit}>
-        {" "}
-        <p style={{ color: "red" }}> {err ? "Input all fields " : ""}</p>
-        <div className="form-group">
-          <label htmlFor="exampleInputTitle">Service User Name</label>
-          <input
-            type="text"
-            className="form-control"
-            aria-describedby="TitleHelp"
-            onChange={(e) => setserviceUserName(e.target.value)}
-            value={serviceUserName}
-          />
-          <label htmlFor="exampleInputTitle">House number / name</label>
+    <div className="serviceuser__container">
+      <div className="col-md-5 pt-1">
+        <form onSubmit={handleSubmit}>
+          {' '}
+          <p style={{ color: 'red' }}> {err ? 'Input all fields ' : ''}</p>
+          <div className="form-group">
+            <label htmlFor="exampleInputTitle">Service User Name</label>
+            <input
+              type="text"
+              className="form-control"
+              aria-describedby="TitleHelp"
+              onChange={(e) => setserviceUserName(e.target.value)}
+              value={serviceUserName}
+            />
+            <label htmlFor="exampleInputTitle">House number / name</label>
 
-          <input
-            type="text"
-            className="form-control"
-            aria-describedby="TitleHelp"
-            onChange={(e) => setserviceUserAddress(e.target.value)}
-            value={serviceUserAddress}
-          />
-          <label htmlFor="exampleInputTitle">
-            Post code{" "}
-            <span style={{ color: "red" }}>
-              {" "}
-              {postCodeErr ? "postcode not valid" : ""}
-            </span>
-          </label>
+            <input
+              type="text"
+              className="form-control"
+              aria-describedby="TitleHelp"
+              onChange={(e) => setserviceUserAddress(e.target.value)}
+              value={serviceUserAddress}
+            />
+            <label htmlFor="exampleInputTitle">
+              Post code{' '}
+              <span style={{ color: 'red' }}>
+                {' '}
+                {postCodeErr ? 'postcode not valid' : ''}
+              </span>
+            </label>
 
-          <input
-            type="text"
-            className="form-control"
-            onChange={(e) => setPostCode(e.target.value)}
-            value={postCode}
-            aria-describedby="TitleHelp"
-          />
+            <input
+              type="text"
+              className="form-control"
+              onChange={(e) => setPostCode(e.target.value)}
+              value={postCode}
+              aria-describedby="TitleHelp"
+            />
 
-          <label htmlFor="exampleInputTitle">Phone number</label>
-          <input
-            type="tel"
-            className="form-control"
-            onChange={(e) => setserviceUserPhoneNumber(e.target.value)}
-            value={serviceUserPhoneNumber}
-            aria-describedby="TitleHelp"
-          />
-        </div>
-        <button type="submit" className="btn btn-primary">
-          Submit
-        </button>
-      </form>
+            <label htmlFor="exampleInputTitle">Phone number</label>
+            <input
+              type="tel"
+              className="form-control"
+              onChange={(e) => setserviceUserPhoneNumber(e.target.value)}
+              value={serviceUserPhoneNumber}
+              aria-describedby="TitleHelp"
+            />
+          </div>
+          <button type="submit" className="btn-secondary btn-lg ">
+            Submit
+          </button>
+        </form>
+      </div>
     </div>
   );
 }

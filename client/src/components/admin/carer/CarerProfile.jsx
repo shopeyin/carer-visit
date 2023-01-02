@@ -60,13 +60,13 @@ function CarerProfile({ serviceUsers }) {
     };
     fetchAllCarerVisits();
   }, [params.carerId, reload]);
- 
+
   const filteredVisits = visits.filter((obj) => {
     return obj.dateOfVisit !== undefined;
   });
   return (
     <div className="carer__container">
-      <div className="row mt-4">
+      <div className="row">
         <div className="col-4 col-sm-3 col-md-2">
           <h1 className="">
             <span className="badge bg-info" style={{ width: '100%' }}>

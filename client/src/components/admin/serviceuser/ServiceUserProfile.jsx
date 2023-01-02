@@ -42,21 +42,15 @@ function ServiceUserProfile() {
   };
 
   return (
-    <>
+    <div className="serviceuser__container">
       {' '}
-      <div className="row">
-        <div className="col-md-6">ServiceUser</div>
-      </div>
-      <div className="row">
-        <div className="col-md-6"> {serviceuser.name}</div>
-      </div>
-      <div className="row">
-        <div className="col-md-6"> {serviceuser.address}</div>
-      </div>
-      <div className="row">
+      <div className="row pt-4">
         <div className="col-md-6">
           {' '}
-          <h4>List of Service user activities/Task</h4>
+          <h4>
+            List of <span className="text-uppercase">{serviceuser.name}</span>'s{' '}
+            activities/Task
+          </h4>
         </div>
       </div>
       <div className="row">
@@ -80,18 +74,20 @@ function ServiceUserProfile() {
       ) : (
         ''
       )}
-      <div className="row">
-        <div className="col-md-6">
-          <h3>All serviceUser task/activities</h3>
-        </div>
-      </div>
       {tasks.map((task) => {
         return (
           <div key={task._id} className="row mt-2">
-            <div className="col-5 col-md-3">
-              <h4> {task.nameOfTask} </h4>
+            <div className="col-6 col-sm-5 col-md-4">
+              <div className="card" style={{ width: '100%' }}>
+                <div className="card-body">
+                  <h4 className="card-title text-center text-uppercase">
+                    {' '}
+                    {task.nameOfTask}
+                  </h4>
+                </div>
+              </div>
             </div>
-            <div className="col-1 col-md-1">
+            <div className="col-3 col-sm-1 col-md-3 text-center p-4 trash-can">
               <i
                 className="fa-solid fa-trash-can mt-2"
                 onClick={() => {
@@ -103,7 +99,7 @@ function ServiceUserProfile() {
           </div>
         );
       })}
-    </>
+    </div>
   );
 }
 

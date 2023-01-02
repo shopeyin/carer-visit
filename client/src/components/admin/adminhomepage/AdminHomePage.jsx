@@ -163,14 +163,24 @@ function AdminHomePage({
           </div>
         </div>
         <div className="col-sm-9 col-md-10 navigation__innerpage">
-          <button
-            type="button"
-            onClick={goToPreviousPage}
-            className="btn btn-dark m-1"
-          >
-            Back
-          </button>
-          <h1> Welcome {currentUser ? currentUser.name : ''}</h1>
+          <div className="row d-flex align-items-end">
+            <div className="col-6">
+              <button
+                type="button"
+                onClick={goToPreviousPage}
+                className="btn btn-dark m-1"
+              >
+                Back
+              </button>
+            </div>
+            <div className="col-6 d-flex justify-content-end">
+              <h1 style={{ fontSize: '2rem' }}>
+                {' '}
+                Welcome {currentUser ? currentUser.name : ''}
+              </h1>
+            </div>
+          </div>
+
           <Routes>
             <Route path="carers" index element={<Carer />} />
             <Route path="carers/add-carer" element={<AddCarer />} />

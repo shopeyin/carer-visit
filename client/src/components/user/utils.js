@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const addVisitInfo = async (data) => {
   try {
-    await axios.post(`/api/v1/visit/visitInformation/`, data);
+    await axios.post(`/api/v1/visitInformation/`, data);
     console.log('submitted');
   } catch (error) {
     console.log(error);

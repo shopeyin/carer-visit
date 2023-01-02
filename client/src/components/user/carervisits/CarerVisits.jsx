@@ -11,19 +11,18 @@ function CarerVisits({ currentUser }) {
   const [serviceUsersVisit, setServiceUsersVisit] = useState([]);
   const [selectedDate, setSelectedDate] = useState(new Date());
 
-
   useEffect(() => {
     let mounted = true;
 
     let visitDate = {
       dateOfVisit:
-        format(new Date(selectedDate), 'yyyy-MM-dd') + 'T00:00:00.000+00:00',
+        format(new Date(selectedDate), 'yyyy-MM-dd') + 'T01:00:00.000+00:00',
     };
-
+    console.log(visitDate);
     const fetchVisitData = async () => {
       try {
         let visit = await fetchVisit(currentUser._id, visitDate);
-        console.log(visit); 
+        console.log(visit);
 
         if (visit.length === 0) {
           setServiceUsersVisit([]);

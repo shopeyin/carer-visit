@@ -1,9 +1,8 @@
 import axios from 'axios';
-import API from '../../API';
 
 export const addVisitInfo = async (data) => {
   try {
-    await API.post(`/visitInformation/`, data);
+    await axios.post(`/api/v1/visit/visitInformation/`, data);
     console.log('submitted');
   } catch (error) {
     console.log(error);
@@ -12,8 +11,8 @@ export const addVisitInfo = async (data) => {
 
 export const fetchVisit = async (currentUserId, visitDate) => {
   try {
-    const visitData = await API.post(
-      `/visit/${currentUserId}`,
+    const visitData = await axios.post(
+      `/api/v1/visit/${currentUserId}`,
       visitDate
     );
 
@@ -28,4 +27,3 @@ export const fetchVisit = async (currentUserId, visitDate) => {
     return err;
   }
 };
-

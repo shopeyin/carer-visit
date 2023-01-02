@@ -26,7 +26,6 @@ function AddVisit({
     careruser: carerId,
   };
 
-  console.log("dataID HER", dataId)
 
   let formatdate =
     format(new Date(selectedDate), 'yyyy-MM-dd') + 'T00:00:00.000Z';
@@ -40,6 +39,8 @@ function AddVisit({
 
     dateOfVisit: addHours(selectedDate, 1),
   };
+  console.log(updateVisitData)
+  console.log(selectedDate)
 
   useEffect(() => {
     if (serviceUserInfo.length && selectedDate && !findUniqueVisit) {

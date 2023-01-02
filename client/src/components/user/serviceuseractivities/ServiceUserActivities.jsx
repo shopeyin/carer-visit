@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { connect, useSelector } from "react-redux";
-import haversine from "haversine-distance";
-import { fetchAllTaskofaServiceUser } from "../../admin/task/taskFunctions";
-import { fetchServiceUsers } from "../../../redux/serviceUser/serviceuser-action";
-import { format } from "date-fns";
-import { addVisitInfo } from "../utils";
-import { useParams, useNavigate } from "react-router-dom";
-import StartVisit from "./StartVisit";
-import EndVisit from "./EndVisit";
+import React, { useEffect, useState } from 'react';
+import { connect, useSelector } from 'react-redux';
+import haversine from 'haversine-distance';
+import { fetchAllTaskofaServiceUser } from '../../admin/task/taskFunctions';
+import { fetchServiceUsers } from '../../../redux/serviceUser/serviceuser-action';
+import { format } from 'date-fns';
+import { addVisitInfo } from '../utils';
+import { useParams, useNavigate } from 'react-router-dom';
+import StartVisit from './StartVisit';
+import EndVisit from './EndVisit';
 
 function ServiceUserActivities({ currentUser, fetchServiceUsers }) {
   const [tasks, setTasks] = useState([]);
@@ -38,10 +38,10 @@ function ServiceUserActivities({ currentUser, fetchServiceUsers }) {
     serviceUser = found;
   });
 
-  let visitId = localStorage.getItem("visitId");
+  let visitId = localStorage.getItem('visitId');
 
   const deleteLocalStorageItems = () => {
-    let visitId = localStorage.getItem("visitId");
+    let visitId = localStorage.getItem('visitId');
 
     localStorage.removeItem(`visitNoteDetails ${params.id} ${visitId} `);
     localStorage.removeItem(`startTime ${params.id}${visitId}`);
@@ -49,15 +49,13 @@ function ServiceUserActivities({ currentUser, fetchServiceUsers }) {
     localStorage.removeItem(`visitStartedStatus ${params.id}${visitId}`);
     localStorage.removeItem(`startEndButton ${params.id}${visitId}`);
     localStorage.removeItem(`disableBtn ${params.id}${visitId}`);
-    localStorage.removeItem("visitId");
+    localStorage.removeItem('visitId');
 
     localStorage.removeItem(`noDISABLED ${params.id} ${visitId}`);
     localStorage.removeItem(`yesDISABLED ${params.id} ${visitId}`);
 
-    console.log("deleted");
+    console.log('deleted');
   };
-
-
 
   const goToPreviousPage = () => {
     navigate(-1);
@@ -67,7 +65,7 @@ function ServiceUserActivities({ currentUser, fetchServiceUsers }) {
     const location = navigator.geolocation.getCurrentPosition(
       (pos) => {
         const date = new Date();
-        let formattedDate = format(date, "HH:mm");
+        let formattedDate = format(date, 'HH:mm');
         setStartTime(formattedDate);
         localStorage.setItem(`startTime ${params.id}${visitId}`, formattedDate);
         localStorage.setItem(`visitStartedStatus ${params.id}${visitId}`, true);
@@ -111,11 +109,11 @@ function ServiceUserActivities({ currentUser, fetchServiceUsers }) {
           longitude: serviceUser.longitude,
         };
 
-        console.log("CALC", haversine(a, b));
+        console.log('CALC', haversine(a, b));
 
         const date = new Date();
-        let formattedDate = format(date, "HH:mm");
-        setEndTime(format(date, "HH:mm"));
+        let formattedDate = format(date, 'HH:mm');
+        setEndTime(format(date, 'HH:mm'));
 
         localStorage.setItem(`endTime ${params.id}${visitId}`, formattedDate);
         localStorage.setItem(
@@ -151,7 +149,7 @@ function ServiceUserActivities({ currentUser, fetchServiceUsers }) {
     const date = new Date();
     if (!visitNote || !visitId || !startTime || !activities) return;
     let data = {
-      time: `${startTime}-${format(date, "HH:mm")}`,
+      time: `${startTime}-${format(date, 'HH:mm')}`,
       visitNote: visitNote,
       visitId: visitId,
       carerId: currentUser._id,
@@ -162,7 +160,7 @@ function ServiceUserActivities({ currentUser, fetchServiceUsers }) {
     };
 
     addVisitInfo(data);
-    console.log("submitted", data);
+    console.log('submitted', data);
 
     localStorage.setItem(
       `visitNoteDetails ${params.id} ${visitId} `,
@@ -212,7 +210,6 @@ function ServiceUserActivities({ currentUser, fetchServiceUsers }) {
   };
 
   useEffect(() => {
-
     getInitialVisitValues();
     getBtnStatus();
     const fetchTask = async () => {
@@ -226,7 +223,7 @@ function ServiceUserActivities({ currentUser, fetchServiceUsers }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params.id]);
   const handleInput = (e, key) => {
-    if (e.target.value === "Yes") {
+    if (e.target.value === 'Yes') {
       let results = noDisabled.filter((id) => id !== e.target.id);
 
       setNoDisabled(results);
@@ -272,21 +269,21 @@ function ServiceUserActivities({ currentUser, fetchServiceUsers }) {
   return (
     <div className="container">
       <i className="fa-solid fa-arrow-left mt-2" onClick={goToPreviousPage}></i>
-      <span>{startTime ? `${startTime} -` : ""}</span>{" "}
-      <span>{endTime ? endTime : ""}</span>{" "}
-      <span style={{ color: "red" }}>
-        {" "}
+      <span>{startTime ? `${startTime} -` : ''}</span>{' '}
+      <span>{endTime ? endTime : ''}</span>{' '}
+      <span style={{ color: 'red' }}>
+        {' '}
         {locationPermissionError
-          ? "accept location permission before starting visit"
-          : ""}
+          ? 'accept location permission before starting visit'
+          : ''}
       </span>
-      <span style={{ color: "red" }}>
-        {endVisitError ? "complete all fields or tasks" : ""}{" "}
+      <span style={{ color: 'red' }}>
+        {endVisitError ? 'complete all fields or tasks' : ''}{' '}
       </span>
       <div className="row  d-flex  justify-content-center mt-4 ">
         <div className="col-md-5">
           <form onSubmit={handleSubmit}>
-            {" "}
+            {' '}
             <div className="form-group">
               <label htmlFor="exampleInputTitle">Visit note </label>
               <input
@@ -300,7 +297,7 @@ function ServiceUserActivities({ currentUser, fetchServiceUsers }) {
           </form>
         </div>
       </div>
-      <div className="row  d-flex  justify-content-center b">
+      <div className="row  d-flex  justify-content-center">
         <div className="col-5 col-md-2 ">
           {startEndButton ? (
             <EndVisit
@@ -316,7 +313,7 @@ function ServiceUserActivities({ currentUser, fetchServiceUsers }) {
         return (
           <div
             key={task._id}
-            className="row  d-flex  justify-content-center mt-2 b"
+            className="row  d-flex  justify-content-center mt-2"
           >
             <div className="col-6 col-sm-7  text-center">{task.nameOfTask}</div>
             <div className="col ">
@@ -328,9 +325,9 @@ function ServiceUserActivities({ currentUser, fetchServiceUsers }) {
                   onClick={(e) => {
                     handleInput(e, `${task.nameOfTask}`);
                   }}
-                  disabled={yesDisabled ? yesDisabled.includes(task._id) : ""}
+                  disabled={yesDisabled ? yesDisabled.includes(task._id) : ''}
                 >
-                  {" "}
+                  {' '}
                   Yes
                 </button>
               ) : (
@@ -343,7 +340,7 @@ function ServiceUserActivities({ currentUser, fetchServiceUsers }) {
                   }}
                   disabled={true}
                 >
-                  {" "}
+                  {' '}
                   Yes
                 </button>
               )}
@@ -355,9 +352,9 @@ function ServiceUserActivities({ currentUser, fetchServiceUsers }) {
                   id={task._id}
                   value="No"
                   onClick={(e) => handleInput(e, `${task.nameOfTask}`)}
-                  disabled={noDisabled ? noDisabled.includes(task._id) : ""}
+                  disabled={noDisabled ? noDisabled.includes(task._id) : ''}
                 >
-                  {" "}
+                  {' '}
                   NO
                 </button>
               ) : (
@@ -368,7 +365,7 @@ function ServiceUserActivities({ currentUser, fetchServiceUsers }) {
                   onClick={(e) => handleInput(e, `${task.nameOfTask}`)}
                   disabled={true}
                 >
-                  {" "}
+                  {' '}
                   NO
                 </button>
               )}
@@ -380,7 +377,6 @@ function ServiceUserActivities({ currentUser, fetchServiceUsers }) {
   );
 }
 const mapStateToProps = (state) => {
- 
   return {
     currentUser: state.user.currentUser,
     serviceUsers: state.serviceUsers.serviceUsers,
@@ -395,4 +391,3 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(ServiceUserActivities);
-

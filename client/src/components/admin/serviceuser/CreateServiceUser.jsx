@@ -73,7 +73,7 @@ function CreateServiceUser({ createNewServiceUser }) {
   };
 
   return (
-    <div className="serviceuser__container d-flex justify-content-center align-items-center">
+    <div className="serviceuser__container">
       <div className="col-md-5 pt-1">
         <form onSubmit={handleSubmit}>
           {' '}

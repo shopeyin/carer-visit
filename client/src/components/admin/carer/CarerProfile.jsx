@@ -77,14 +77,14 @@ function CarerProfile({ serviceUsers }) {
         <div className="col-4 col-sm-3 col-md-2">
           <h1>
             {' '}
-            <span class="badge bg-info" style={{ width: '100%' }}>
+            <span className="badge bg-info" style={{ width: '100%' }}>
               {' '}
               {carer ? carer.barePassword : ''}
             </span>
           </h1>
         </div>
       </div>
-      <div className="row ">
+      <div className="row">
         <div className="col-md-5">
           <AddVisit
             carerId={carer._id}

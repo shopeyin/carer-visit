@@ -2,7 +2,7 @@ import axios from 'axios';
 export const addTaskToUser = async (serviceuserId, data) => {
   try {
     await axios.post(`/api/v1/task/${serviceuserId}`, data);
-    console.log('ASYNC submitted');
+   
   } catch (error) {
     console.log(error);
   }

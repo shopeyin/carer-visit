@@ -60,19 +60,28 @@ function CarerProfile({ serviceUsers }) {
     };
     fetchAllCarerVisits();
   }, [params.carerId, reload]);
-  console.log(visits);
-
+ 
   const filteredVisits = visits.filter((obj) => {
     return obj.dateOfVisit !== undefined;
   });
-  console.log(filteredVisits, 'filetered');
   return (
-    <>
+    <div className="carer__container">
       <div className="row mt-4">
-        <div className="col-md-5">
-          <h3>
-            {carer ? carer.name : ''} {carer ? carer.barePassword : ''}
-          </h3>
+        <div className="col-4 col-sm-3 col-md-2">
+          <h1 className="">
+            <span className="badge bg-info" style={{ width: '100%' }}>
+              {carer ? carer.name : ''}
+            </span>
+          </h1>
+        </div>
+        <div className="col-4 col-sm-3 col-md-2">
+          <h1>
+            {' '}
+            <span class="badge bg-info" style={{ width: '100%' }}>
+              {' '}
+              {carer ? carer.barePassword : ''}
+            </span>
+          </h1>
         </div>
       </div>
       <div className="row ">
@@ -99,7 +108,7 @@ function CarerProfile({ serviceUsers }) {
         filteredVisits.map((item) => {
           return (
             <div key={item._id} className="row mt-4">
-              <div className="col col-md-2">
+              <div className="col-6 col-sm-4 col-md-3">
                 {' '}
                 {item.dateOfVisit ? (
                   <VisitInformation
@@ -113,7 +122,7 @@ function CarerProfile({ serviceUsers }) {
                   <VisitInformation visitId={item._id} />
                 )}
               </div>
-              <div className="col-12 col-md-2  ">
+              <div className="col-6 col-sm-4 col-md-2">
                 <DeleteServiceUserFromVisit
                   serviceUsers={serviceUsers}
                   visitId={item._id}
@@ -121,7 +130,7 @@ function CarerProfile({ serviceUsers }) {
                   reMountComponent={reMountComponent}
                 />
               </div>
-              <div className="col col-md-2 ">
+              <div className="col-6 col-sm-3 col-md-2">
                 {' '}
                 <AddServiceUserToVisit
                   serviceUsers={serviceUsers}
@@ -130,7 +139,7 @@ function CarerProfile({ serviceUsers }) {
                   reMountComponent={reMountComponent}
                 />
               </div>
-              <div className="col col-sm-1 ">
+              <div className="col-6 col-sm-1 ">
                 <i
                   className="fa-solid fa-trash-can mt-2"
                   onClick={() => {
@@ -141,7 +150,7 @@ function CarerProfile({ serviceUsers }) {
             </div>
           );
         })}
-    </>
+    </div>
   );
 }
 const mapStateToProps = (state) => ({

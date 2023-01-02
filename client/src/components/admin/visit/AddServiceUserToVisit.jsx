@@ -18,15 +18,26 @@ function AddServiceUserToVisit({
     dateOfVisit: dateOfVisit,
   };
 
+  // const handleSubmit = async (visitId) => {
+  //   await axios.post(
+  //     `api/v1/visit/add/${visitId}`,
+
+  //     updateVisitData
+  //   );
+  //   console.log(updateVisitData);
+  //   reMountComponent();
+  // };
+
   const handleSubmit = async (visitId) => {
+    console.log('called');
     await axios.post(
-      `api/v1/visit/add/${visitId}`,
+      `/api/v1/visit/add/${visitId}`,
 
       updateVisitData
     );
-    console.log(updateVisitData);
     reMountComponent();
   };
+
   const handleClose = () => {
     setShow(false);
   };

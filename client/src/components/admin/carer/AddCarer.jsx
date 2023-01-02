@@ -1,15 +1,15 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { createNewCarer, fetchCarers } from "../../../redux/carer/carer-action";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { createNewCarer, fetchCarers } from '../../../redux/carer/carer-action';
 
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 
 function AddCarer({ createNewCarer, fetchCarers }) {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [role, setRole] = useState("");
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [role, setRole] = useState('');
   const [errMessage, setErrMessage] = useState(false);
 
   const navigate = useNavigate();
@@ -43,13 +43,13 @@ function AddCarer({ createNewCarer, fetchCarers }) {
   };
   console.log(errMessage);
   return (
-    <div className="row d-flex align-items-center inneradminpage ">
+    <div className="row d-flex justify-content-center carer__container">
       <div className="col-md-5">
         <form onSubmit={handleSubmit}>
-          {" "}
-          <p style={{ color: "red" }}>
-            {" "}
-            {errMessage ? "Input all fields" : ""}
+          {' '}
+          <p style={{ color: 'red' }}>
+            {' '}
+            {errMessage ? 'Input all fields' : ''}
           </p>
           <div className="form-group">
             <label htmlFor="exampleInputTitle"> Name {role}</label>
@@ -74,7 +74,7 @@ function AddCarer({ createNewCarer, fetchCarers }) {
             />
             <select
               value={role}
-              className="form-select"
+              className="form-select mt-2"
               aria-label="Default select example"
               onChange={(e) => {
                 setRole(e.target.value);
@@ -84,6 +84,7 @@ function AddCarer({ createNewCarer, fetchCarers }) {
               <option value="carer">Carer</option>
               <option value="admin">Admin</option>
             </select>
+            <br></br>
             <label htmlFor="exampleInputTitle">Password</label>
             <input
               type="password"
@@ -105,7 +106,7 @@ function AddCarer({ createNewCarer, fetchCarers }) {
               aria-describedby="TitleHelp"
             />
           </div>
-          <button type="submit" className="btn btn-primary">
+          <button type="submit" className="btn-secondary btn-lg ">
             Submit
           </button>
         </form>

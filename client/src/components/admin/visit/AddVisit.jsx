@@ -7,7 +7,6 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import axios from 'axios';
 
-const BASE_URL = 'http://127.0.0.1:1000/api/v1/visit/';
 
 function AddVisit({
   carerId,
@@ -26,6 +25,8 @@ function AddVisit({
   let dataId = {
     careruser: carerId,
   };
+
+  console.log("dataID HER", dataId)
 
   let formatdate =
     format(new Date(selectedDate), 'yyyy-MM-dd') + 'T00:00:00.000Z';
@@ -49,6 +50,7 @@ function AddVisit({
   }, [selectedDate, serviceUserInfo, disableBtn, findUniqueVisit]);
 
   const handleSubmit = async (visitId) => {
+    console.log('called');
     await axios.post(
       `/api/v1/visit/add/${visitId}`,
 
@@ -85,7 +87,7 @@ function AddVisit({
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      <Button variant="primary btn-lg" onClick={handleShow}>
         Add Visit
       </Button>
 

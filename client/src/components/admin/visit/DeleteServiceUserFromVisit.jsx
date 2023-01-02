@@ -20,7 +20,7 @@ function DeleteServiceUserFromVisit({
   };
 
   const handleSubmit = async (visitId, serviceUserId) => {
-    await axios.post(`api/v1/visit/delete/${visitId}`, {
+    await axios.post(`/api/v1/visit/delete/${visitId}`, {
       serviceusersToVisit: serviceUserId,
     });
   };

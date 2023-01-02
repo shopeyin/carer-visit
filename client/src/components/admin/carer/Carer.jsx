@@ -38,7 +38,7 @@ function Carer({ carers, reMount, reMountComponent, fetchCarers }) {
             </Link>{' '}
           </div>
           <div
-            className="col-1 col-sm-1 col-md-3 text-center p-4"
+            className="col-3 col-sm-1 col-md-3 text-center p-4"
             style={{ pointerEvents: 'auto' }}
             id="trash-can"
           >

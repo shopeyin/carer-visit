@@ -43,7 +43,7 @@ function AddCarer({ createNewCarer, fetchCarers }) {
   };
   return (
     <div className="row carer__container">
-      <div className="col-md-5">
+      <div className="col-md-6">
         <form onSubmit={handleSubmit}>
           {' '}
           <p style={{ color: 'red' }}>
@@ -54,7 +54,7 @@ function AddCarer({ createNewCarer, fetchCarers }) {
             <label htmlFor="exampleInputTitle"> Name {role}</label>
             <input
               type="text"
-              className="form-control"
+              className="form-control form__input "
               aria-describedby="TitleHelp"
               onChange={(e) => {
                 setName(e.target.value);
@@ -64,7 +64,7 @@ function AddCarer({ createNewCarer, fetchCarers }) {
             <label htmlFor="exampleInputTitle">Email</label>
             <input
               type="email"
-              className="form-control"
+              className="form-control form__input"
               onChange={(e) => {
                 setEmail(e.target.value);
               }}
@@ -87,7 +87,7 @@ function AddCarer({ createNewCarer, fetchCarers }) {
             <label htmlFor="exampleInputTitle">Password</label>
             <input
               type="password"
-              className="form-control"
+              className="form-control form__input "
               onChange={(e) => {
                 setPassword(e.target.value);
               }}
@@ -97,7 +97,7 @@ function AddCarer({ createNewCarer, fetchCarers }) {
             <label htmlFor="exampleInputTitle">Confirm Password</label>
             <input
               type="password"
-              className="form-control"
+              className="form-control form__input"
               onChange={(e) => {
                 setConfirmPassword(e.target.value);
               }}

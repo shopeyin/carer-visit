@@ -174,7 +174,7 @@ function AdminHomePage({
               </button>
             </div>
             <div className="col-6 d-flex justify-content-end">
-              <h1 style={{ fontSize: '2rem' }}>
+              <h1 style={{ fontSize: '2rem', color: 'white' }}>
                 {' '}
                 Welcome {currentUser ? currentUser.name : ''}
               </h1>

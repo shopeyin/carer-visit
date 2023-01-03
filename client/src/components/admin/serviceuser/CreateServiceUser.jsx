@@ -74,7 +74,7 @@ function CreateServiceUser({ createNewServiceUser }) {
 
   return (
     <div className="serviceuser__container">
-      <div className="col-md-5 pt-1">
+      <div className="col-md-6 pt-1">
         <form onSubmit={handleSubmit}>
           {' '}
           <p style={{ color: 'red' }}> {err ? 'Input all fields ' : ''}</p>
@@ -82,7 +82,7 @@ function CreateServiceUser({ createNewServiceUser }) {
             <label htmlFor="exampleInputTitle">Service User Name</label>
             <input
               type="text"
-              className="form-control"
+              className="form-control form__input "
               aria-describedby="TitleHelp"
               onChange={(e) => setserviceUserName(e.target.value)}
               value={serviceUserName}
@@ -91,7 +91,7 @@ function CreateServiceUser({ createNewServiceUser }) {
 
             <input
               type="text"
-              className="form-control"
+              className="form-control form__input "
               aria-describedby="TitleHelp"
               onChange={(e) => setserviceUserAddress(e.target.value)}
               value={serviceUserAddress}
@@ -106,7 +106,7 @@ function CreateServiceUser({ createNewServiceUser }) {
 
             <input
               type="text"
-              className="form-control"
+              className="form-control form__input "
               onChange={(e) => setPostCode(e.target.value)}
               value={postCode}
               aria-describedby="TitleHelp"
@@ -115,7 +115,7 @@ function CreateServiceUser({ createNewServiceUser }) {
             <label htmlFor="exampleInputTitle">Phone number</label>
             <input
               type="tel"
-              className="form-control"
+              className="form-control form__input"
               onChange={(e) => setserviceUserPhoneNumber(e.target.value)}
               value={serviceUserPhoneNumber}
               aria-describedby="TitleHelp"

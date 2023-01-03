@@ -1,8 +1,11 @@
 .serviceuser__container{
     min-height: 90%;
     border-radius: 1rem;
-background-color: #badfe7;
-    
+
+background-image: linear-gradient(90deg,rgba(#badfe7,.9) 0%, 
+rgba(white, .2) 100%, 
+transparent 50%);
+  
     padding-right:2rem;
     padding-bottom:2rem;
     padding-left:2rem;

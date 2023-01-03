@@ -50,13 +50,7 @@
   }
 }
 
-.b{
- border: 1px solid black;
-}
 
-.r{
-  border: 1px solid red;
-}
 
 html {
   font-size: 62.5%;
@@ -84,9 +78,9 @@ body {
   font-weight: 400;
   line-height: 1.7;
   box-sizing: border-box;
-  font-size: 1.5rem;
+   font-size: 1.5rem;
   min-height: 95vh;
-  
+  padding:1rem;
   
   @include respond(tab-port) {
     // 1rem = 8px , 8/16 =50% width<900

@@ -35,8 +35,44 @@ function SignIn({ login }) {
 
   if (tokenLoaded) {
     return (
-      <div className="container">
-        <div className="row signin-container d-flex justify-content-center align-items-center">
+      <div className="container-fluid signin__container">
+        <div className="row signin__container-form">
+          <div className="col-11 col-sm-6 col-md-4 m-3">
+            <form onSubmit={handleSubmit}>
+              <p className="error-msg">
+                {' '}
+                {errorState ? 'Invalid login details' : ''}
+              </p>
+              <div className="form-group text-color">
+                <label htmlFor="exampleInputTitle form__label">Email</label>
+                <input
+                  type="email"
+                  className="form-control form-control-lg  form__input "
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                  }}
+                  value={email}
+                  aria-describedby="TitleHelp"
+                />
+                <label htmlFor="exampleInputTitle form__label">Password</label>
+                <input
+                  type="password"
+                  className="form-control form-control-lg  form__input"
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                  }}
+                  value={password}
+                  aria-describedby="TitleHelp"
+                />
+
+                <button type="submit" className="btn btn-primary btn-lg mt-2 ">
+                  Submit
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+        {/* <div className="row signin-container d-flex justify-content-center align-items-center">
           <div className="col-12 col-sm-5">
             <form onSubmit={handleSubmit}>
               <p style={{ color: 'red' }}>
@@ -71,7 +107,7 @@ function SignIn({ login }) {
               </div>
             </form>
           </div>
-        </div>
+        </div> */}
       </div>
     );
   } else {

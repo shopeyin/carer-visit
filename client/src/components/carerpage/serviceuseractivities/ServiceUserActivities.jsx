@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { connect, useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import haversine from 'haversine-distance';
 import { fetchAllTaskofaServiceUser } from '../../admin/task/taskFunctions';
 import { fetchServiceUsers } from '../../../redux/serviceUser/serviceuser-action';
@@ -9,7 +9,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import StartVisit from './StartVisit';
 import EndVisit from './EndVisit';
 
-function ServiceUserActivities({ currentUser, fetchServiceUsers }) {
+function ServiceUserActivities() {
   const [tasks, setTasks] = useState([]);
   const [visitNote, setVisitNote] = useState([]);
   const [activities, setActivities] = useState({});
@@ -27,15 +27,19 @@ function ServiceUserActivities({ currentUser, fetchServiceUsers }) {
 
   const params = useParams();
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
   let serviceUser;
-
+  let currentUser;
   useSelector((state) => {
     const found = state.serviceUsers.serviceUsers.find(
       (element) => element._id === params.id
     );
 
     serviceUser = found;
+  });
+
+  useSelector((state) => {
+    currentUser = state.user.currentUser;
   });
 
   let visitId = localStorage.getItem('visitId');
@@ -53,8 +57,6 @@ function ServiceUserActivities({ currentUser, fetchServiceUsers }) {
 
     localStorage.removeItem(`noDISABLED ${params.id} ${visitId}`);
     localStorage.removeItem(`yesDISABLED ${params.id} ${visitId}`);
-
-    console.log('deleted');
   };
 
   const goToPreviousPage = () => {
@@ -160,7 +162,7 @@ function ServiceUserActivities({ currentUser, fetchServiceUsers }) {
     };
 
     addVisitInfo(data);
-    console.log('submitted', data);
+    
 
     localStorage.setItem(
       `visitNoteDetails ${params.id} ${visitId} `,
@@ -218,8 +220,7 @@ function ServiceUserActivities({ currentUser, fetchServiceUsers }) {
     };
 
     fetchTask();
-    fetchServiceUsers();
-
+    dispatch(fetchServiceUsers());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params.id]);
   const handleInput = (e, key) => {
@@ -376,18 +377,5 @@ function ServiceUserActivities({ currentUser, fetchServiceUsers }) {
     </div>
   );
 }
-const mapStateToProps = (state) => {
-  return {
-    currentUser: state.user.currentUser,
-    serviceUsers: state.serviceUsers.serviceUsers,
-  };
-};
 
-const mapDispatchToProps = (dispatch) => ({
-  fetchServiceUsers: () => dispatch(fetchServiceUsers()),
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ServiceUserActivities);
+export default ServiceUserActivities;

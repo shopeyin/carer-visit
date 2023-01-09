@@ -3,9 +3,9 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import AdminHomePage from './components/admin/adminhomepage/AdminHomePage';
 import ProtectedRoute from './ProtectedRoute';
-import ServiceUserActivities from './components/user/serviceuseractivities/ServiceUserActivities';
-import CarerPage from './components/user/carerhomepage/CarerHomePage';
-import SignIn from './components/user/SignIn';
+import ServiceUserActivities from './components/carerpage/serviceuseractivities/ServiceUserActivities';
+import CarerPage from './components/carerpage/carerhomepage/CarerHomePage';
+import SignIn from './components/carerpage/SignIn';
 import Navbar from './components/admin/navigation/Navbar';
 import './App.scss';
 
@@ -38,7 +38,6 @@ function App() {
           />
           <Route
             path="admin/*"
-          
             element={
               <ProtectedRoute
                 isAllowed={!!currentUser && currentUser.role === 'admin'}

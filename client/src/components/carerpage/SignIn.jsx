@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { login } from '../../redux/user/user-action';
 
-import { connect, useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import './signin.style.scss';
 
-function SignIn({ login }) {
+function SignIn() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [tokenLoaded, setTokenloaded] = useState(false);
@@ -13,7 +13,7 @@ function SignIn({ login }) {
   let errorState = useSelector((state) => state.user.error);
 
   let navigate = useNavigate();
-
+  let dispatch = useDispatch();
   useEffect(() => {
     if (localStorage.getItem('Authtoken')) {
       navigate('/');
@@ -28,7 +28,7 @@ function SignIn({ login }) {
       email,
       password,
     };
-    await login(data);
+    await dispatch(login(data));
 
     navigate('/');
   };
@@ -72,50 +72,11 @@ function SignIn({ login }) {
             </form>
           </div>
         </div>
-        {/* <div className="row signin-container d-flex justify-content-center align-items-center">
-          <div className="col-12 col-sm-5">
-            <form onSubmit={handleSubmit}>
-              <p style={{ color: 'red' }}>
-                {' '}
-                {errorState ? 'Invalid login details' : ''}
-              </p>
-              <div className="form-group">
-                <label htmlFor="exampleInputTitle">Email</label>
-                <input
-                  type="email"
-                  className="form-control form-control-lg"
-                  onChange={(e) => {
-                    setEmail(e.target.value);
-                  }}
-                  value={email}
-                  aria-describedby="TitleHelp"
-                />
-                <label htmlFor="exampleInputTitle">Password</label>
-                <input
-                  type="password"
-                  className="form-control form-control-lg"
-                  onChange={(e) => {
-                    setPassword(e.target.value);
-                  }}
-                  value={password}
-                  aria-describedby="TitleHelp"
-                />
-
-                <button type="submit" className="btn btn-primary btn-lg mt-2 ">
-                  Submit
-                </button>
-              </div>
-            </form>
-          </div>
-        </div> */}
       </div>
     );
   } else {
     return <div>Loading</div>;
   }
 }
-const mapDispatchToProps = (dispatch) => ({
-  login: (data) => dispatch(login(data)),
-});
 
-export default connect(null, mapDispatchToProps)(SignIn);
+export default SignIn;

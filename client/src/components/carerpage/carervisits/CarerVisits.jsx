@@ -18,11 +18,9 @@ function CarerVisits({ currentUser }) {
       dateOfVisit:
         format(new Date(selectedDate), 'yyyy-MM-dd') + 'T01:00:00.000+00:00',
     };
-    console.log(visitDate);
     const fetchVisitData = async () => {
       try {
         let visit = await fetchVisit(currentUser._id, visitDate);
-        console.log(visit);
 
         if (visit.length === 0) {
           setServiceUsersVisit([]);
@@ -38,33 +36,6 @@ function CarerVisits({ currentUser }) {
       }
     };
     fetchVisitData();
-    // const fetchVisit = async () => {
-    //   try {
-    //     const visitData = await axios.post(
-    //       `${BASE_URL}/visit/${currentUser._id}`,
-    //       visitDate
-    //     );
-    //     console.log(visitData);
-    //     const {
-    //       data: {
-    //         data: { visit },
-    //       },
-    //     } = visitData;
-
-    //     console.log(visit);
-
-    //     if (mounted) {
-    //       localStorage.setItem("visitId", visit[0]._id);
-
-    //       setServiceUsersVisit(visit[0].serviceusersToVisit);
-    //     }
-    //   } catch (err) {
-    //     setServiceUsersVisit([]);
-    //     console.log(err.message);
-    //   }
-    // };
-
-    // fetchVisit();
 
     return () => {
       mounted = false;

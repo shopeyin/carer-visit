@@ -1,7 +1,5 @@
 import UserActionTypes from './user-type';
 import axios from 'axios';
-import { BASE_URL } from '../../App';
-import API from '../../API';
 
 export const setCurrentUser = (user) => ({
   type: UserActionTypes.SET_CURRENT_USER,
@@ -33,20 +31,20 @@ export function login(userdata) {
   };
 }
 
-export const fetchUserData = () => {
-  return async (dispatch) => {
-    const config = {
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('Authtoken')}`,
-      },
-    };
-    try {
-      const { data } = await await API.get(`/private`, config);
-      console.log(data.data);
-      dispatch(setCurrentUser(data.data));
-    } catch (error) {
-      localStorage.removeItem('Authtoken');
-    }
-  };
-};
+// export const fetchUserData = () => {
+//   return async (dispatch) => {
+//     const config = {
+//       headers: {
+//         'Content-Type': 'application/json',
+//         Authorization: `Bearer ${localStorage.getItem('Authtoken')}`,
+//       },
+//     };
+//     try {
+//       const { data } = await await API.get(`/private`, config);
+//       console.log(data.data);
+//       dispatch(setCurrentUser(data.data));
+//     } catch (error) {
+//       localStorage.removeItem('Authtoken');
+//     }
+//   };
+// };

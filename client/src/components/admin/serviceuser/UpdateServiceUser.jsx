@@ -20,9 +20,9 @@ function UpdateServiceUser() {
         `/api/v1/serviceusers/${params.id}`
       );
       const { data } = serviceUserData;
-
+      console.log(data);
       setserviceUserName(data.data.serviceUser.name);
-      setserviceUserAddress(data.data.serviceUser.address);
+      setserviceUserAddress(data.data.serviceUser.houseAddress);
       setserviceUserPhoneNumber(data.data.serviceUser.phoneNumber);
     }
     getServiceUserData();

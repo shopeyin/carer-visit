@@ -58,6 +58,7 @@ function SignIn() {
                 <input
                   type="password"
                   className="form-control form-control-lg  form__input"
+                  autoComplete="off"
                   onChange={(e) => {
                     setPassword(e.target.value);
                   }}

@@ -1,12 +1,16 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchCarers } from '../../../redux/carer/carer-action';
 import { reMount } from '../../../../src/redux/remount/remount-action';
+import { selectCarers } from '../../../selector';
 import axios from 'axios';
 import './carer.style.scss';
 
-function Carer({ carers, reMount, reMountComponent, fetchCarers }) {
+function Carer({ reMount, reMountComponent, fetchCarers }) {
+  
+  const carers = useSelector(selectCarers);
+
   React.useEffect(() => {
     fetchCarers();
   }, [fetchCarers, reMountComponent]);

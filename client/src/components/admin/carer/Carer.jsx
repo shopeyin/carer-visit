@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect, useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchCarers } from '../../../redux/carer/carer-action';
 import { reMount } from '../../../../src/redux/remount/remount-action';
@@ -7,18 +7,19 @@ import { selectCarers } from '../../../selector';
 import axios from 'axios';
 import './carer.style.scss';
 
-function Carer({ reMount, reMountComponent, fetchCarers }) {
-  
+function Carer() {
   const carers = useSelector(selectCarers);
+  const remount = useSelector((state) => state.remount.reload);
+  const dispatch = useDispatch();
 
   React.useEffect(() => {
-    fetchCarers();
-  }, [fetchCarers, reMountComponent]);
+    dispatch(fetchCarers());
+  }, [dispatch, remount]);
 
   const handleDeleteCarer = async (id) => {
     try {
       await axios.delete(`/api/v1/carers/${id}`);
-      reMount();
+      dispatch(reMount());
     } catch (error) {
       console.log(error);
     }
@@ -69,18 +70,4 @@ function Carer({ reMount, reMountComponent, fetchCarers }) {
   );
 }
 
-const mapDispatchToProps = (dispatch) => ({
-  fetchCarers: () => dispatch(fetchCarers()),
-  reMount: () => dispatch(reMount()),
-});
-
-const mapStateToProps = (state) => {
-  return {
-    loading: state.carers.loading,
-    carers: state.carers.carers,
-    hasErrors: state.carers.hasErrors,
-    reMountComponent: state.remount.reload,
-  };
-};
-// Connect Redux to React
-export default connect(mapStateToProps, mapDispatchToProps)(Carer);
+export default Carer;

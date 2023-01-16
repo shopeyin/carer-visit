@@ -79,7 +79,7 @@ function AddCarer({ createNewCarer, fetchCarers }) {
                 setRole(e.target.value);
               }}
             >
-              <option selected>Choose role</option>
+              <option value="">Choose role</option>
               <option value="carer">Carer</option>
               <option value="admin">Admin</option>
             </select>

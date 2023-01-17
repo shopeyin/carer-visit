@@ -23,6 +23,8 @@ function Carer() {
     } catch (error) {
       console.log(error);
     }
+
+    return;
   };
 
   let itemsToRender;

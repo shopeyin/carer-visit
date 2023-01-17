@@ -13,7 +13,7 @@ const persistConfig = {
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-const middleware = [logger, thunk];
+export const middleware = [logger, thunk];
 
 const store = createStore(
   persistedReducer,

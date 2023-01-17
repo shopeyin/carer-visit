@@ -1,27 +1,21 @@
 import CarerReducer from './carer-reducer';
 import * as actions from './carer-action';
-import CarerActionTypes from './carer-type';
+
+let initial_state = {
+  carers: [],
+  loading: false,
+  hasErrors: false,
+};
 
 describe('carerReducer', () => {
   it('should return the initial state', () => {
-    expect(CarerReducer(undefined, { type: undefined })).toEqual({
-      carers: [],
-      loading: false,
-      hasErrors: false,
-    });
+    expect(CarerReducer(undefined, { type: undefined })).toEqual(initial_state);
   });
 
   it('loading the carer', () => {
-    const INITIAL_STATE = {
-      carers: [],
-      loading: false,
-      hasErrors: false,
-    };
-
-    expect(CarerReducer(INITIAL_STATE, actions.getCarers())).toEqual({
-      carers: [],
+    expect(CarerReducer(initial_state, actions.getCarers())).toEqual({
+      ...initial_state,
       loading: true,
-      hasErrors: false,
     });
   });
 
@@ -42,16 +36,7 @@ describe('carerReducer', () => {
       _id: '3',
     };
 
-    // expect(CarerReducer(INITIAL_STATE, actions.setCarer(newCarer))).toEqual({
-    //   carers: newCarer,
-    //   loading: false,
-    //   hasErrors: false,
-    // });
-    const setCarerAction = {
-      type: CarerActionTypes.SET_CARERS,
-      payload: newCarer,
-    };
-    expect(CarerReducer(INITIAL_STATE, setCarerAction)).toEqual({
+    expect(CarerReducer(INITIAL_STATE, actions.setCarer(newCarer))).toEqual({
       carers: newCarer,
       loading: false,
       hasErrors: false,

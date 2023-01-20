@@ -1,0 +1,106 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CarerList component CarerList component should render correctly 1`] = `
+<div
+  className="carer__container"
+>
+  <div
+    className="row"
+  >
+    <div
+      className="col-11 col-sm-5 m-3 "
+    >
+      <Link
+        className="link-color navigation__link"
+        to="add-carer"
+      >
+        Add Carer
+      </Link>
+    </div>
+  </div>
+  <div
+    className="row"
+    key="1"
+  >
+    <div
+      className="col-7 col-sm-5 col-md-3   m-1 carer__container-item"
+    >
+      <Link
+        className="link-color"
+        to="1"
+      >
+        <div
+          className="card"
+          style={
+            Object {
+              "width": "100%",
+            }
+          }
+        >
+          <div
+            className="card-body"
+          >
+            <h4
+              className="card-title text-center text-uppercase"
+            >
+               
+              Carer 1
+            </h4>
+          </div>
+        </div>
+      </Link>
+       
+    </div>
+    <div
+      className="col-3 col-sm-1 col-md-3 text-center p-4 trash-can"
+    >
+      <i
+        className="fa-solid fa-trash-can mt-2"
+        onClick={[Function]}
+      />
+    </div>
+  </div>
+  <div
+    className="row"
+    key="2"
+  >
+    <div
+      className="col-7 col-sm-5 col-md-3   m-1 carer__container-item"
+    >
+      <Link
+        className="link-color"
+        to="2"
+      >
+        <div
+          className="card"
+          style={
+            Object {
+              "width": "100%",
+            }
+          }
+        >
+          <div
+            className="card-body"
+          >
+            <h4
+              className="card-title text-center text-uppercase"
+            >
+               
+              Carer 2
+            </h4>
+          </div>
+        </div>
+      </Link>
+       
+    </div>
+    <div
+      className="col-3 col-sm-1 col-md-3 text-center p-4 trash-can"
+    >
+      <i
+        className="fa-solid fa-trash-can mt-2"
+        onClick={[Function]}
+      />
+    </div>
+  </div>
+</div>
+`;

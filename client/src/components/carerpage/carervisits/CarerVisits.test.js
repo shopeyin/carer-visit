@@ -8,7 +8,7 @@ import axios from 'axios';
 jest.mock('axios');
 
 describe('CarerVisit component', () => {
-  it('renders carer component', () => {
+  it('renders carervisit component', () => {
     let mockCurrentUser = {
       barePassword: '123456',
       email: 'belinda@gmail.com',
@@ -19,7 +19,7 @@ describe('CarerVisit component', () => {
       _id: '62bc001b2105fc4bd8981d70',
     };
     const wrapper = mount(<CarerVisits currentUser={mockCurrentUser} />);
-    // console.log(wrapper.props());
+   // console.log('PROPSSSS', wrapper.props());
     // console.log(wrapper.state('serviceUsersVisit'));
 
     //expect(wrapper.exists()).toBe(true);

@@ -16,7 +16,7 @@ function CarerVisits({ currentUser }) {
 
     let visitDate = {
       dateOfVisit:
-        format(new Date(selectedDate), 'yyyy-MM-dd') + 'T01:00:00.000+00:00',
+        format(new Date(selectedDate), 'yyyy-MM-dd') + 'T00:00:00.000Z',
     };
     const fetchVisitData = async () => {
       try {
